@@ -7,7 +7,7 @@ Rake::ExtensionTask.new "llhttp_ext" do |ext|
   ext.lib_dir = "lib/llhttp"
 end
 
-task :test => :compile do
+task test: :compile do
   unless system "bundle exec rspec"
     exit $?.exitstatus
   end

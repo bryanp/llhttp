@@ -11,43 +11,27 @@ gem install llhttp
 ## Usage
 
 ```ruby
-require "llhttp/parser"
+require "llhttp"
 
-parser = LLHttp::Parser.new
-
-parser.on_message_begin do
-  ...
+# Define a delegate class for handling callbacks:
+#
+class Delegate < LLHttp::Delegate
+  def on_message_begin
+    ...
+  end
 end
 
-parser.on_url do |url|
-  ...
-end
+delegate = Delegate.new
 
-parser.on_status do |status|
-  ...
-end
+# Create a parser:
+#
+parser = LLHttp::Parser.new(delegate)
 
-parser.on_header_field do |field|
-  ...
-end
-
-parser.on_header_value do |value|
-  ...
-end
-
-parser.on_headers_complete do
-  ...
-end
-
-parser.on_body do |body|
-  ...
-end
-
-parser.on_message_complete do
-  ...
-end
+# Parse a request:
+#
+parser << "GET / HTTP/1.1\r\n\r\n"
 
 # Reset the parser for the next request:
 #
-parser.reset
+parser.finish
 ```
