@@ -9,7 +9,9 @@ module LLHttp
   #
   # = Introspection
   #
-  # `LLHttp::Parser#keep_alive?` returns `true` if there might be any other messages following the last that was successfuly parsed.
+  # * `LLHttp::Parser#content_length` returns the content length of the current request.
+  # * `LLHttp::Parser#method` returns the method of the current response.
+  # * `LLHttp::Parser#keep_alive?` returns `true` if there might be any other messages following the last that was successfuly parsed.
   #
   class Parser
     LLHTTP_TYPES = {both: 0, request: 1, response: 2}.freeze
