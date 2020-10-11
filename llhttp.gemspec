@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.author = "Bryan Powell"
   spec.email = "bryan@bryanp.org"
-  spec.homepage = "https://metabahn.com/code/llhttp"
+  spec.homepage = "https://github.com/metabahn/llhttp/"
 
   spec.required_ruby_version = ">= 2.5.0"
 
