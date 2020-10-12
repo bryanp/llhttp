@@ -29,12 +29,17 @@ static VALUE mLLHttp, cParser, eError;
 
 static void rb_llhttp_free(llhttp_t *parser) {
   if (parser) {
+    free(parser->settings);
     free(parser);
   }
 }
 
 VALUE rb_llhttp_allocate(VALUE klass) {
   llhttp_t *parser = (llhttp_t *)malloc(sizeof(llhttp_t));
+  llhttp_settings_t *settings = (llhttp_settings_t *)malloc(sizeof(llhttp_settings_t));
+
+  llhttp_settings_init(settings);
+  llhttp_init(parser, HTTP_BOTH, settings);
 
   return Data_Wrap_Struct(klass, 0, rb_llhttp_free, parser);
 }
@@ -194,9 +199,7 @@ static VALUE rb_llhttp_init(VALUE self, VALUE type) {
 
   Data_Get_Struct(self, llhttp_t, parser);
 
-  llhttp_settings_t *settings = (llhttp_settings_t *)malloc(sizeof(llhttp_settings_t));
-
-  llhttp_settings_init(settings);
+  llhttp_settings_t *settings = parser->settings;
 
   settings->on_message_begin = (llhttp_cb)rb_llhttp_on_message_begin;
   settings->on_url = (llhttp_data_cb)rb_llhttp_on_url;
