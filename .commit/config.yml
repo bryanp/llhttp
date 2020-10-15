@@ -1,0 +1,34 @@
+commit:
+  includes:
+    - ruby-gem
+    - oss
+
+  externals:
+    - repo: "metabahn/commit-templates"
+      private: true
+
+license:
+  slug: mit
+  name: "MIT"
+
+project:
+  slug: "llhttp"
+  description: "Ruby bindings for llhttp."
+
+  author:
+    name: "Bryan Powell"
+    email: "bryan@metabahn.com"
+    homepage: "https://github.com/metabahn/llhttp/"
+
+  copyright:
+    attribution: "Metabahn"
+    year: 2020
+
+ruby:
+  gem:
+    namespace: "LLHttp"
+    extra: |-2
+        spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*"]
+        spec.require_path = "lib"
+
+        spec.extensions = %w[ext/llhttp/extconf.rb]
