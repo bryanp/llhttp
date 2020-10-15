@@ -1,11 +1,18 @@
 commit:
   includes:
     - ruby-gem
+    - ruby-rspec
+    - ruby-standard
     - oss
+    - git
 
   externals:
     - repo: "metabahn/commit-templates"
       private: true
+
+git:
+  ignore:
+    - "tmp"
 
 license:
   slug: mit
