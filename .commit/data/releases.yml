@@ -1,8 +1,12 @@
 ---
 - version: v0.0.2
+  date: "2020-10-11"
+  link: "https://github.com/metabahn/llhttp/releases/tag/v0.0.2"
   changes:
   - type: fix
     summary: Correctly free parser settings when freeing the parser.
 - version: v0.0.1
+  date: "2020-10-11"
+  link: "https://github.com/metabahn/llhttp/releases/tag/v0.0.1"
   changes:
   - summary: Initial release.
