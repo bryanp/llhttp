@@ -1,4 +1,18 @@
 commit:
+  changelogs:
+    - label: "commit.changelog"
+      destination: "./CHANGELOG.md"
+
+  changetypes:
+    - label: "commit.type.add"
+      name: "add"
+    - label: "commit.type.chg"
+      name: "chg"
+    - label: "commit.type.fix"
+      name: "fix"
+    - label: "commit.type.dep"
+      name: "dep"
+
   includes:
     - ruby-gem
     - ruby-rspec
