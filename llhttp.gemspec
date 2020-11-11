@@ -21,4 +21,3 @@ Gem::Specification.new do |spec|
 
   spec.extensions = %w[ext/llhttp/extconf.rb]
 end
-
