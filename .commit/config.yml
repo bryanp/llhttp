@@ -19,6 +19,7 @@ commit:
     - ruby-standard
     - oss
     - git
+    - base
 
   externals:
     - repo: "metabahn/commit-templates"
