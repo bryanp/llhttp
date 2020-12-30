@@ -1,0 +1,47 @@
+name: ci
+
+on:
+  pull_request:
+    branches:
+    - main
+  push:
+
+jobs:
+  test-ruby:
+    runs-on: ubuntu-latest
+
+    name: ${{ matrix.ruby }}
+
+    strategy:
+      matrix:
+        ruby:
+          - 2.5
+          - 2.6
+          - 2.7
+          - 3.0
+
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "${{matrix.ruby}}"
+
+      - name: Install Dependencies
+        shell: bash -l -e -o pipefail {0}
+        run: |
+          rm -f Gemfile.lock
+          bundle install --jobs=3 && bundle update --jobs=3
+
+      - name: Run Linter
+        shell: bash -l -e -o pipefail {0}
+        run: |
+          CI=true bundle exec standardrb
+
+      - name: Run Tests
+        shell: bash -l -e -o pipefail {0}
+        run: |
+          CI=true bundle exec rake test
