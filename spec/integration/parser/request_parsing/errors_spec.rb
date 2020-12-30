@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "llhttp"
+
 RSpec.describe "errors when parsing requests" do
   let(:instance) {
     LLHttp::Parser.new(LLHttp::Delegate.new, type: :request)

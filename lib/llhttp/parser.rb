@@ -37,10 +37,37 @@ module LLHttp
 
     def initialize(delegate, type: :both)
       @type, @delegate = type.to_sym, delegate
+      @instance = Instance.new(nil, LLHTTP_TYPES.fetch(@type), @delegate)
+    end
 
-      llhttp_init(LLHTTP_TYPES.fetch(@type))
+    def finish
+      LLHttp.llhttp_finish(@instance)
+    end
+
+    def parse(data)
+      errno = LLHttp.llhttp_execute(@instance, data, data.length)
+      raise build_error(errno) if errno > 0
+    end
+    alias_method :<<, :parse
+
+    def content_length
+      @instance[:content_length]
+    end
+
+    def method
+      LLHttp.llhttp_method_name(@instance[:method]).read_string
+    end
+
+    def status_code
+      @instance[:status_code]
+    end
+
+    def keep_alive?
+      LLHttp.llhttp_should_keep_alive(@instance) == 1
+    end
+
+    private def build_error(errno)
+      Error.new("Error Parsing data: #{LLHttp.llhttp_errno_name(errno).read_string} #{LLHttp.llhttp_get_error_reason(@instance).read_string}")
     end
   end
 end
-
-require_relative "llhttp_ext"

@@ -19,5 +19,7 @@ Gem::Specification.new do |spec|
   spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*"]
   spec.require_path = "lib"
 
-  spec.extensions = %w[ext/llhttp/extconf.rb]
+  spec.extensions = %w[ext/Rakefile]
+
+  spec.add_dependency "ffi-compiler", "~> 1.0"
 end

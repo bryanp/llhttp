@@ -66,4 +66,20 @@ RSpec.describe "request introspection" do
       expect(@method).to eq("GET")
     end
   end
+
+  describe "keep_alive" do
+    let(:extension) {
+      proc {
+        def on_headers_complete
+          @context.instance_variable_set(:@keep_alive, @context.instance.keep_alive?)
+        end
+      }
+    }
+
+    it "returns the keep alive state" do
+      parse
+
+      expect(@keep_alive).to eq(true)
+    end
+  end
 end

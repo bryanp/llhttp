@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 require "fileutils"
-require "rake/extensiontask"
 
-Rake::ExtensionTask.new "llhttp_ext" do |ext|
-  ext.ext_dir = "ext/llhttp"
-  ext.lib_dir = "lib/llhttp"
+task :compile do
+  system "cd ext && bundle exec rake"
 end
 
 task test: :compile do
