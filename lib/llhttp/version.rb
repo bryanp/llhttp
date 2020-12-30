@@ -3,6 +3,8 @@
 module LLHttp
   VERSION = "0.0.2"
 
+  # [public] LLHttp's current version.
+  #
   def self.version
     VERSION
   end
