@@ -119,8 +119,8 @@ module LLHttp
   extend FFI::Library
   ffi_lib(FFI::Compiler::Loader.find("llhttp-ext"))
 
-  callback :llhttp_data_cb, [Instance.ptr, :pointer, :size_t], :int
-  callback :llhttp_cb, [Instance.ptr], :int
+  callback :llhttp_data_cb, [:pointer, :pointer, :size_t], :int
+  callback :llhttp_cb, [:pointer], :int
 
   class Settings < FFI::Struct
     layout :on_message_begin, :llhttp_cb,
