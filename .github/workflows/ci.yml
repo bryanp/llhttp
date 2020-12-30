@@ -44,4 +44,4 @@ jobs:
       - name: Run Tests
         shell: bash -l -e -o pipefail {0}
         run: |
-          CI=true bundle exec rspec
+          CI=true bundle exec rake test
