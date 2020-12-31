@@ -10,4 +10,10 @@
 
   * Initial release.
 
+## 0.0.3
+
+*unreleased*
+
+  * `fix` [#5](https://github.com/metabahn/llhttp/pull/5) Build the extension correctly ([bryanp](https://github.com/bryanp))
+
 
