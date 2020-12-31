@@ -5,7 +5,6 @@ require "rake/extensiontask"
 
 Rake::ExtensionTask.new "llhttp_ext" do |ext|
   ext.ext_dir = "ext/llhttp"
-  ext.lib_dir = "lib/llhttp"
 end
 
 task test: :compile do
@@ -16,8 +15,10 @@ end
 
 task :clean do
   [
-    "./lib/llhttp/llhttp_ext.bundle"
+    "./lib/llhttp_ext.bundle"
   ].each do |file|
+    next unless File.exist?(file)
+
     FileUtils.rm(file)
   end
 end
