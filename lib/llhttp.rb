@@ -37,22 +37,33 @@ module LLHttp
         super(pointer)
       else
         super()
+
         @delegate = delegate
-
-        @settings = Settings.new
-        @settings[:on_message_begin] = method(:on_message_begin).to_proc
-        @settings[:on_url] = method(:on_url).to_proc
-        @settings[:on_status] = method(:on_status).to_proc
-        @settings[:on_header_field] = method(:on_header_field).to_proc
-        @settings[:on_header_value] = method(:on_header_value).to_proc
-        @settings[:on_headers_complete] = method(:on_headers_complete).to_proc
-        @settings[:on_body] = method(:on_body).to_proc
-        @settings[:on_message_complete] = method(:on_message_complete).to_proc
-        @settings[:on_chunk_header] = method(:on_chunk_header).to_proc
-        @settings[:on_chunk_complete] = method(:on_chunk_complete).to_proc
-
+        @settings = build_settings
         LLHttp.llhttp_init(self, type, @settings)
       end
+    end
+
+    def parse(data)
+      errno = LLHttp.llhttp_execute(self, data, data.length)
+      raise build_error(errno) if errno > 0
+    end
+    alias_method :<<, :parse
+
+    def content_length
+      self[:content_length]
+    end
+
+    def request_method
+      LLHttp.llhttp_method_name(self[:method]).read_string
+    end
+
+    def status_code
+      self[:status_code]
+    end
+
+    def keep_alive?
+      LLHttp.llhttp_should_keep_alive(self) == 1
     end
 
     def on_message_begin(instance)
@@ -113,6 +124,25 @@ module LLHttp
       @delegate.on_chunk_complete
 
       nil
+    end
+
+    private def build_settings
+      settings = Settings.new
+      settings[:on_message_begin] = method(:on_message_begin).to_proc
+      settings[:on_url] = method(:on_url).to_proc
+      settings[:on_status] = method(:on_status).to_proc
+      settings[:on_header_field] = method(:on_header_field).to_proc
+      settings[:on_header_value] = method(:on_header_value).to_proc
+      settings[:on_headers_complete] = method(:on_headers_complete).to_proc
+      settings[:on_body] = method(:on_body).to_proc
+      settings[:on_message_complete] = method(:on_message_complete).to_proc
+      settings[:on_chunk_header] = method(:on_chunk_header).to_proc
+      settings[:on_chunk_complete] = method(:on_chunk_complete).to_proc
+      settings
+    end
+
+    private def build_error(errno)
+      Error.new("Error Parsing data: #{LLHttp.llhttp_errno_name(errno).read_string} #{LLHttp.llhttp_get_error_reason(self).read_string}")
     end
   end
 
