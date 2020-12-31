@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.license = "MIT"
 
-  spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*"]
+  spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*", "ext/**/*"]
   spec.require_path = "lib"
 
   spec.extensions = %w[ext/llhttp/extconf.rb]
