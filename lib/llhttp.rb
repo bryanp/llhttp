@@ -54,7 +54,7 @@ module LLHttp
       self[:content_length]
     end
 
-    def request_method
+    def method_name
       LLHttp.llhttp_method_name(self[:method]).read_string
     end
 

@@ -51,11 +51,11 @@ RSpec.describe "request introspection" do
     end
   end
 
-  describe "method" do
+  describe "method_name" do
     let(:extension) {
       proc {
         def on_headers_complete
-          @context.instance_variable_set(:@method, @context.instance.method)
+          @context.instance_variable_set(:@method_name, @context.instance.method_name)
         end
       }
     }
@@ -63,7 +63,7 @@ RSpec.describe "request introspection" do
     it "returns the content" do
       parse
 
-      expect(@method).to eq("GET")
+      expect(@method_name).to eq("GET")
     end
   end
 

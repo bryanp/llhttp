@@ -22,7 +22,7 @@ module LLHttp
   # Introspection
   #
   #   * `LLHttp::Parser#content_length` returns the content length of the current request.
-  #   * `LLHttp::Parser#method` returns the method of the current response.
+  #   * `LLHttp::Parser#method_name` returns the method of the current response.
   #   * `LLHttp::Parser#status_code` returns the status code of the current response.
   #   * `LLHttp::Parser#keep_alive?` returns `true` if there might be more messages.
   #
@@ -32,7 +32,7 @@ module LLHttp
   #
   class Parser
     extend Forwardable
-    def_delegators :@instance, :parse, :<<, :content_length, :status_code, :keep_alive?
+    def_delegators :@instance, :parse, :<<, :content_length, :method_name, :status_code, :keep_alive?
 
     LLHTTP_TYPES = {both: 0, request: 1, response: 2}.freeze
 
@@ -47,10 +47,6 @@ module LLHttp
 
     def finish
       LLHttp.llhttp_finish(@instance)
-    end
-
-    def method
-      @instance.request_method
     end
   end
 end
