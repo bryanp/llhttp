@@ -1,3 +1,9 @@
+## [v0.0.3](https://github.com/metabahn/llhttp/releases/tag/v0.0.3)
+
+*released on 2020-12-30*
+
+  * `fix` [#5](https://github.com/metabahn/llhttp/pull/5) Build the extension correctly ([bryanp](https://github.com/bryanp))
+
 ## [v0.0.2](https://github.com/metabahn/llhttp/releases/tag/v0.0.2)
 
 *released on 2020-10-11*
@@ -9,11 +15,5 @@
 *released on 2020-10-11*
 
   * Initial release.
-
-## 0.0.3
-
-*unreleased*
-
-  * `fix` [#5](https://github.com/metabahn/llhttp/pull/5) Build the extension correctly ([bryanp](https://github.com/bryanp))
 
 
