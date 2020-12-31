@@ -1,4 +1,13 @@
 ---
+- version: v0.0.3
+  changes:
+  - id: 5
+    type: fix
+    summary: Build the extension correctly
+    link: https://github.com/metabahn/llhttp/pull/5
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.0.2
   date: '2020-10-11'
   link: https://github.com/metabahn/llhttp/releases/tag/v0.0.2
@@ -10,12 +19,3 @@
   link: https://github.com/metabahn/llhttp/releases/tag/v0.0.1
   changes:
   - summary: Initial release.
-- version: 0.0.3
-  changes:
-  - id: 5
-    type: fix
-    summary: Build the extension correctly
-    link: https://github.com/metabahn/llhttp/pull/5
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
