@@ -1,3 +1,9 @@
+## v0.1.0
+
+*unreleased*
+
+  * `chg` [#6](https://github.com/metabahn/llhttp/pull/6) Update llhttp to 3.0.1 ([bryanp](https://github.com/bryanp))
+
 ## [v0.0.3](https://github.com/metabahn/llhttp/releases/tag/v0.0.3)
 
 *released on 2020-12-30*
