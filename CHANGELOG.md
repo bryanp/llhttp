@@ -2,6 +2,7 @@
 
 *unreleased*
 
+  * `chg` [#7](https://github.com/metabahn/llhttp/pull/7) Return an error status from the appropriate callbacks ([bryanp](https://github.com/bryanp))
   * `chg` [#6](https://github.com/metabahn/llhttp/pull/6) Update llhttp to 3.0.1 ([bryanp](https://github.com/bryanp))
 
 ## [v0.0.3](https://github.com/metabahn/llhttp/releases/tag/v0.0.3)
