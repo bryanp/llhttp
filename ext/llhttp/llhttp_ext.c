@@ -55,8 +55,8 @@ VALUE rb_llhttp_allocate(VALUE klass) {
   return Data_Wrap_Struct(klass, 0, rb_llhttp_free, parser);
 }
 
-void rb_llhttp_callback_call(VALUE delegate, ID method) {
-  rb_funcall(delegate, method, 0);
+VALUE rb_llhttp_callback_call(VALUE delegate, ID method) {
+  return rb_funcall(delegate, method, 0);
 }
 
 void rb_llhttp_data_callback_call(VALUE delegate, ID method, char *data, size_t length) {
@@ -64,81 +64,53 @@ void rb_llhttp_data_callback_call(VALUE delegate, ID method, char *data, size_t 
 }
 
 int rb_llhttp_on_message_begin(llhttp_t *parser) {
-  VALUE delegate = (VALUE)parser->data;
+  return NUM2INT(rb_llhttp_callback_call((VALUE)parser->data, rb_llhttp_callback_on_message_begin));
+}
 
-  rb_llhttp_callback_call(delegate, rb_llhttp_callback_on_message_begin);
+int rb_llhttp_on_headers_complete(llhttp_t *parser) {
+  return NUM2INT(rb_llhttp_callback_call((VALUE)parser->data, rb_llhttp_callback_on_headers_complete));
+}
 
-  return 0;
+int rb_llhttp_on_message_complete(llhttp_t *parser) {
+  return NUM2INT(rb_llhttp_callback_call((VALUE)parser->data, rb_llhttp_callback_on_message_complete));
+}
+
+int rb_llhttp_on_chunk_header(llhttp_t *parser) {
+  return NUM2INT(rb_llhttp_callback_call((VALUE)parser->data, rb_llhttp_callback_on_chunk_header));
 }
 
 int rb_llhttp_on_url(llhttp_t *parser, char *data, size_t length) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_data_callback_call(delegate, rb_llhttp_callback_on_url, data, length);
+  rb_llhttp_data_callback_call((VALUE)parser->data, rb_llhttp_callback_on_url, data, length);
 
   return 0;
 }
 
 int rb_llhttp_on_status(llhttp_t *parser, char *data, size_t length) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_data_callback_call(delegate, rb_llhttp_callback_on_status, data, length);
+  rb_llhttp_data_callback_call((VALUE)parser->data, rb_llhttp_callback_on_status, data, length);
 
   return 0;
 }
 
 int rb_llhttp_on_header_field(llhttp_t *parser, char *data, size_t length) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_data_callback_call(delegate, rb_llhttp_callback_on_header_field, data, length);
+  rb_llhttp_data_callback_call((VALUE)parser->data, rb_llhttp_callback_on_header_field, data, length);
 
   return 0;
 }
 
 int rb_llhttp_on_header_value(llhttp_t *parser, char *data, size_t length) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_data_callback_call(delegate, rb_llhttp_callback_on_header_value, data, length);
-
-  return 0;
-}
-
-int rb_llhttp_on_headers_complete(llhttp_t *parser) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_callback_call(delegate, rb_llhttp_callback_on_headers_complete);
+  rb_llhttp_data_callback_call((VALUE)parser->data, rb_llhttp_callback_on_header_value, data, length);
 
   return 0;
 }
 
 int rb_llhttp_on_body(llhttp_t *parser, char *data, size_t length) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_data_callback_call(delegate, rb_llhttp_callback_on_body, data, length);
-
-  return 0;
-}
-
-int rb_llhttp_on_message_complete(llhttp_t *parser) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_callback_call(delegate, rb_llhttp_callback_on_message_complete);
-
-  return 0;
-}
-
-int rb_llhttp_on_chunk_header(llhttp_t *parser) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_callback_call(delegate, rb_llhttp_callback_on_chunk_header);
+  rb_llhttp_data_callback_call((VALUE)parser->data, rb_llhttp_callback_on_body, data, length);
 
   return 0;
 }
 
 int rb_llhttp_on_chunk_complete(llhttp_t *parser) {
-  VALUE delegate = (VALUE)parser->data;
-
-  rb_llhttp_callback_call(delegate, rb_llhttp_callback_on_chunk_complete);
+  rb_llhttp_callback_call((VALUE)parser->data, rb_llhttp_callback_on_chunk_complete);
 
   return 0;
 }
@@ -213,27 +185,29 @@ static VALUE rb_llhttp_init(VALUE self, VALUE type) {
   llhttp_settings_t *settings = parser->settings;
 
   settings->on_message_begin = (llhttp_cb)rb_llhttp_on_message_begin;
+  settings->on_headers_complete = (llhttp_cb)rb_llhttp_on_headers_complete;
+  settings->on_message_complete = (llhttp_cb)rb_llhttp_on_message_complete;
+  settings->on_chunk_header = (llhttp_cb)rb_llhttp_on_chunk_header;
+
   settings->on_url = (llhttp_data_cb)rb_llhttp_on_url;
   settings->on_status = (llhttp_data_cb)rb_llhttp_on_status;
   settings->on_header_field = (llhttp_data_cb)rb_llhttp_on_header_field;
   settings->on_header_value = (llhttp_data_cb)rb_llhttp_on_header_value;
-  settings->on_headers_complete = (llhttp_cb)rb_llhttp_on_headers_complete;
   settings->on_body = (llhttp_data_cb)rb_llhttp_on_body;
-  settings->on_message_complete = (llhttp_cb)rb_llhttp_on_message_complete;
-  settings->on_chunk_header = (llhttp_cb)rb_llhttp_on_chunk_header;
   settings->on_chunk_complete = (llhttp_cb)rb_llhttp_on_chunk_complete;
 
   llhttp_init(parser, FIX2INT(type), settings);
 
-  rb_llhttp_callback_on_message_begin = rb_intern("on_message_begin");
+  rb_llhttp_callback_on_message_begin = rb_intern("internal_on_message_begin");
+  rb_llhttp_callback_on_headers_complete = rb_intern("internal_on_headers_complete");
+  rb_llhttp_callback_on_message_complete = rb_intern("internal_on_message_complete");
+  rb_llhttp_callback_on_chunk_header = rb_intern("internal_on_chunk_header");
+
   rb_llhttp_callback_on_url = rb_intern("on_url");
   rb_llhttp_callback_on_status = rb_intern("on_status");
   rb_llhttp_callback_on_header_field = rb_intern("on_header_field");
   rb_llhttp_callback_on_header_value = rb_intern("on_header_value");
-  rb_llhttp_callback_on_headers_complete = rb_intern("on_headers_complete");
   rb_llhttp_callback_on_body = rb_intern("on_body");
-  rb_llhttp_callback_on_message_complete = rb_intern("on_message_complete");
-  rb_llhttp_callback_on_chunk_header = rb_intern("on_chunk_header");
   rb_llhttp_callback_on_chunk_complete = rb_intern("on_chunk_complete");
 
   parser->data = (void*)rb_iv_get(self, "@delegate");
