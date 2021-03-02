@@ -1,6 +1,13 @@
 ---
 - version: v0.1.0
   changes:
+  - id: 7
+    type: chg
+    summary: Return an error status from the appropriate callbacks
+    link: https://github.com/metabahn/llhttp/pull/7
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
   - id: 6
     type: chg
     summary: Update llhttp to 3.0.1
