@@ -165,7 +165,7 @@ VALUE rb_llhttp_content_length(VALUE self) {
 
   Data_Get_Struct(self, llhttp_t, parser);
 
-  return UINT2NUM(parser->content_length);
+  return ULL2NUM(parser->content_length);
 }
 
 VALUE rb_llhttp_method(VALUE self) {
