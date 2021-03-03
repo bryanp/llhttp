@@ -178,6 +178,22 @@ VALUE rb_llhttp_status_code(VALUE self) {
   return UINT2NUM(parser->status_code);
 }
 
+VALUE rb_llhttp_http_major(VALUE self) {
+  llhttp_t *parser;
+
+  Data_Get_Struct(self, llhttp_t, parser);
+
+  return UINT2NUM(parser->http_major);
+}
+
+VALUE rb_llhttp_http_minor(VALUE self) {
+  llhttp_t *parser;
+
+  Data_Get_Struct(self, llhttp_t, parser);
+
+  return UINT2NUM(parser->http_minor);
+}
+
 VALUE rb_llhttp_keep_alive(VALUE self) {
   llhttp_t *parser;
 
@@ -252,6 +268,8 @@ void Init_llhttp_ext(void) {
   rb_define_method(cParser, "content_length", rb_llhttp_content_length, 0);
   rb_define_method(cParser, "method", rb_llhttp_method, 0);
   rb_define_method(cParser, "status_code", rb_llhttp_status_code, 0);
+  rb_define_method(cParser, "http_major", rb_llhttp_http_major, 0);
+  rb_define_method(cParser, "http_minor", rb_llhttp_http_minor, 0);
 
   rb_define_method(cParser, "keep_alive?", rb_llhttp_keep_alive, 0);
 
