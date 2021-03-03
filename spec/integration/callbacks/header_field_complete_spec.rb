@@ -18,6 +18,7 @@ RSpec.describe "callbacks: header field complete" do
       parse
 
       expect(delegate.calls).to eq([
+        [:on_header_field_complete, []],
         [:on_header_field_complete, []]
       ])
     end
