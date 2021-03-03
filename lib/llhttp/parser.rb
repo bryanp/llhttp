@@ -22,6 +22,8 @@ module LLHttp
   #   * `LLHttp::Parser#content_length` returns the content length of the current request.
   #   * `LLHttp::Parser#method` returns the method of the current response.
   #   * `LLHttp::Parser#status_code` returns the status code of the current response.
+  #   * `LLHttp::Parser#http_major` returns the major http version of the current request/response.
+  #   * `LLHttp::Parser#http_minor` returns the minor http version of the current request/response.
   #   * `LLHttp::Parser#keep_alive?` returns `true` if there might be more messages.
   #
   # Finishing
