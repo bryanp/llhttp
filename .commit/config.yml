@@ -30,8 +30,8 @@ git:
     - "tmp"
 
 license:
-  slug: mit
-  name: "MIT"
+  slug: mpl
+  name: "MPL-2.0"
 
 project:
   slug: "llhttp"
