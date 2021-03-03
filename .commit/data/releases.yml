@@ -1,6 +1,13 @@
 ---
 - version: v0.1.0
   changes:
+  - id: 8
+    type: add
+    summary: Support new *_complete callbacks
+    link: https://github.com/metabahn/llhttp/pull/8
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
   - id: 7
     type: chg
     summary: Return an error status from the appropriate callbacks
