@@ -1,6 +1,13 @@
 ---
 - version: v0.1.0
   changes:
+  - id: 9
+    type: chg
+    summary: Update llhttp to 4.0.0
+    link: https://github.com/metabahn/llhttp/pull/9
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
   - id: 2
     type: add
     summary: Support introspection of http major/minor version
