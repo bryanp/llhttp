@@ -2,7 +2,7 @@
 
 require_relative "support/context/parsing"
 
-RSpec.describe "errors when parsing requests" do
+RSpec.describe "callback errors" do
   include_context "parsing"
 
   shared_examples "examples" do
@@ -63,7 +63,15 @@ RSpec.describe "errors when parsing requests" do
         }
       }
 
-      it "raises expectedly"
+      let(:fixture) {
+        :"chunked_#{type}"
+      }
+
+      it "raises expectedly" do
+        expect {
+          parse
+        }.to raise_error(LLHttp::Error, "Error Parsing data: HPE_CB_CHUNK_HEADER `on_chunk_header` callback error")
+      end
     end
   end
 

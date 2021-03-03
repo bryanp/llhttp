@@ -43,6 +43,34 @@ RSpec.shared_context "parsing" do
 
   let(:fixtures) {
     {
+      chunked_request: [
+        "GET / HTTP/1.1\r\n",
+        "transfer-encoding: chunked\r\n",
+        "\r\n",
+        "7\r\n",
+        "Mozilla\r\n",
+        "9\r\n",
+        "Developer\r\n",
+        "7\r\n",
+        "Network\r\n",
+        "0\r\n",
+        "\r\n"
+      ],
+
+      chunked_response: [
+        "HTTP/1.1 200 OK\r\n",
+        "transfer-encoding: chunked\r\n",
+        "\r\n",
+        "7\r\n",
+        "Mozilla\r\n",
+        "9\r\n",
+        "Developer\r\n",
+        "7\r\n",
+        "Network\r\n",
+        "0\r\n",
+        "\r\n"
+      ],
+
       invalid_request_header: [
         "GET / HTTP/1.1\r\n",
         "content-length\r\n"
