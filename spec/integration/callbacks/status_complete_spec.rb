@@ -2,14 +2,14 @@
 
 require_relative "../support/context/parsing"
 
-RSpec.describe "callbacks: header value" do
+RSpec.describe "callbacks: status complete" do
   include_context "parsing"
 
   shared_examples "examples" do
     let(:extension) {
       proc {
-        def on_header_value(*args)
-          @calls << [:on_header_value, args]
+        def on_status_complete(*args)
+          @calls << [:on_status_complete, args]
         end
       }
     }
@@ -18,18 +18,9 @@ RSpec.describe "callbacks: header value" do
       parse
 
       expect(delegate.calls).to eq([
-        [:on_header_value, ["18"]],
-        [:on_header_value, ["text/plain"]]
+        [:on_status_complete, []]
       ])
     end
-  end
-
-  context "request" do
-    let(:type) {
-      :request
-    }
-
-    include_examples "examples"
   end
 
   context "response" do

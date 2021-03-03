@@ -84,6 +84,7 @@ RSpec.shared_context "parsing" do
       request: [
         "GET / HTTP/1.1\r\n",
         "content-length: 18\r\n",
+        "content-type: text/plain\r\n",
         "\r\n",
         "body1\n",
         "body2\n",
@@ -94,6 +95,7 @@ RSpec.shared_context "parsing" do
       response: [
         "HTTP/1.1 200 OK\r\n",
         "content-length: 18\r\n",
+        "content-type: text/plain\r\n",
         "\r\n",
         "body1\n",
         "body2\n",

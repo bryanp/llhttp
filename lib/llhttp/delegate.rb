@@ -62,6 +62,26 @@ module LLHttp
     def on_chunk_complete
     end
 
+    # [public]
+    #
+    def on_url_complete
+    end
+
+    # [public]
+    #
+    def on_status_complete
+    end
+
+    # [public]
+    #
+    def on_header_field_complete
+    end
+
+    # [public]
+    #
+    def on_header_value_complete
+    end
+
     private def internal_on_message_begin
       on_message_begin
 

@@ -42,8 +42,8 @@ RSpec.describe "reusing a parser instance" do
       end
 
       expect(delegate.calls.count(:on_message_begin)).to eq(10_000)
-      expect(delegate.calls.count(:on_header_field)).to eq(10_000)
-      expect(delegate.calls.count(:on_header_value)).to eq(10_000)
+      expect(delegate.calls.count(:on_header_field)).to eq(20_000)
+      expect(delegate.calls.count(:on_header_value)).to eq(20_000)
       expect(delegate.calls.count(:on_headers_complete)).to eq(10_000)
       expect(delegate.calls.count(:on_body)).to eq(30_000)
       expect(delegate.calls.count(:on_message_complete)).to eq(10_000)
