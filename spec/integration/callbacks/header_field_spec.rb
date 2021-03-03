@@ -18,7 +18,8 @@ RSpec.describe "callbacks: header field" do
       parse
 
       expect(delegate.calls).to eq([
-        [:on_header_field, ["content-length"]]
+        [:on_header_field, ["content-length"]],
+        [:on_header_field, ["content-type"]]
       ])
     end
   end
