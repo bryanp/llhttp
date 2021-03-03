@@ -2,6 +2,7 @@
 
 *unreleased*
 
+  * `chg` [#9](https://github.com/metabahn/llhttp/pull/9) Update llhttp to 4.0.0 ([bryanp](https://github.com/bryanp))
   * `add` [#2](https://github.com/metabahn/llhttp/pull/2) Support introspection of http major/minor version ([midnight-wonderer](https://github.com/midnight-wonderer))
   * `add` [#8](https://github.com/metabahn/llhttp/pull/8) Support new *_complete callbacks ([bryanp](https://github.com/bryanp))
   * `chg` [#7](https://github.com/metabahn/llhttp/pull/7) Return an error status from the appropriate callbacks ([bryanp](https://github.com/bryanp))
