@@ -211,23 +211,63 @@ static VALUE rb_llhttp_init(VALUE self, VALUE type) {
 
   llhttp_settings_t *settings = parser->settings;
 
-  settings->on_message_begin = (llhttp_cb)rb_llhttp_on_message_begin;
-  settings->on_headers_complete = (llhttp_cb)rb_llhttp_on_headers_complete;
-  settings->on_message_complete = (llhttp_cb)rb_llhttp_on_message_complete;
-  settings->on_chunk_header = (llhttp_cb)rb_llhttp_on_chunk_header;
+  VALUE delegate = rb_iv_get(self, "@delegate");
 
-  settings->on_url = (llhttp_data_cb)rb_llhttp_on_url;
-  settings->on_status_complete = (llhttp_cb)rb_llhttp_on_status_complete;
-  settings->on_header_field = (llhttp_data_cb)rb_llhttp_on_header_field;
-  settings->on_header_value = (llhttp_data_cb)rb_llhttp_on_header_value;
-  settings->on_body = (llhttp_data_cb)rb_llhttp_on_body;
+  if (rb_respond_to(delegate, rb_intern("on_message_begin"))) {
+    settings->on_message_begin = (llhttp_cb)rb_llhttp_on_message_begin;
+  }
 
-  settings->on_chunk_complete = (llhttp_cb)rb_llhttp_on_chunk_complete;
+  if (rb_respond_to(delegate, rb_intern("on_headers_complete"))) {
+    settings->on_headers_complete = (llhttp_cb)rb_llhttp_on_headers_complete;
+  }
 
-  settings->on_status = (llhttp_data_cb)rb_llhttp_on_status;
-  settings->on_url_complete = (llhttp_cb)rb_llhttp_on_url_complete;
-  settings->on_header_field_complete = (llhttp_cb)rb_llhttp_on_header_field_complete;
-  settings->on_header_value_complete = (llhttp_cb)rb_llhttp_on_header_value_complete;
+  if (rb_respond_to(delegate, rb_intern("on_message_complete"))) {
+    settings->on_message_complete = (llhttp_cb)rb_llhttp_on_message_complete;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_chunk_header"))) {
+    settings->on_chunk_header = (llhttp_cb)rb_llhttp_on_chunk_header;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_url"))) {
+    settings->on_url = (llhttp_data_cb)rb_llhttp_on_url;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_status_complete"))) {
+    settings->on_status_complete = (llhttp_cb)rb_llhttp_on_status_complete;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_header_field"))) {
+    settings->on_header_field = (llhttp_data_cb)rb_llhttp_on_header_field;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_header_value"))) {
+    settings->on_header_value = (llhttp_data_cb)rb_llhttp_on_header_value;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_body"))) {
+    settings->on_body = (llhttp_data_cb)rb_llhttp_on_body;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_chunk_complete"))) {
+    settings->on_chunk_complete = (llhttp_cb)rb_llhttp_on_chunk_complete;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_status"))) {
+    settings->on_status = (llhttp_data_cb)rb_llhttp_on_status;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_url_complete"))) {
+    settings->on_url_complete = (llhttp_cb)rb_llhttp_on_url_complete;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_header_field_complete"))) {
+    settings->on_header_field_complete = (llhttp_cb)rb_llhttp_on_header_field_complete;
+  }
+
+  if (rb_respond_to(delegate, rb_intern("on_header_value_complete"))) {
+    settings->on_header_value_complete = (llhttp_cb)rb_llhttp_on_header_value_complete;
+  }
 
   llhttp_init(parser, FIX2INT(type), settings);
 
@@ -249,7 +289,7 @@ static VALUE rb_llhttp_init(VALUE self, VALUE type) {
   rb_llhttp_callback_on_header_field_complete = rb_intern("on_header_field_complete");
   rb_llhttp_callback_on_header_value_complete = rb_intern("on_header_value_complete");
 
-  parser->data = (void*)rb_iv_get(self, "@delegate");
+  parser->data = (void*)delegate;
 
   return Qtrue;
 }
