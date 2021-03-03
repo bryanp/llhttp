@@ -1,20 +1,16 @@
 # frozen_string_literal: true
 
-require "llhttp"
+require_relative "../../support/context/parsing"
 
 RSpec.describe "parsing multiple requests" do
-  let(:instance) {
-    LLHttp::Parser.new(delegate, type: :request)
+  include_context "parsing"
+
+  let(:type) {
+    :request
   }
 
-  let(:delegate) {
-    klass = Class.new(LLHttp::Delegate) {
-      attr_reader :calls
-
-      def initialize
-        @calls = []
-      end
-
+  let(:extension) {
+    proc {
       def on_message_begin
         @calls << :on_message_begin
       end
@@ -43,19 +39,7 @@ RSpec.describe "parsing multiple requests" do
         @calls << :on_message_complete
       end
     }
-
-    klass.new
   }
-
-  def parse
-    instance << "GET / HTTP/1.1\r\n"
-    instance << "content-length: 18\r\n"
-    instance << "\r\n"
-    instance << "body1\n"
-    instance << "body2\n"
-    instance << "body3\n"
-    instance << "\r\n"
-  end
 
   it "parses correctly" do
     10_000.times do

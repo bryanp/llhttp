@@ -1,37 +1,13 @@
 # frozen_string_literal: true
 
-require "llhttp"
+require_relative "../../support/context/parsing"
 
 RSpec.describe "parsing responses" do
-  let(:instance) {
-    LLHttp::Parser.new(delegate, type: :response)
+  include_context "parsing"
+
+  let(:type) {
+    :response
   }
-
-  let(:delegate) {
-    local = self
-
-    klass = Class.new(LLHttp::Delegate) {
-      attr_reader :calls
-
-      def initialize
-        @calls = []
-      end
-
-      class_eval(&local.extension)
-    }
-
-    klass.new
-  }
-
-  def parse
-    instance << "HTTP/1.1 200 OK\r\n"
-    instance << "content-length: 18\r\n"
-    instance << "\r\n"
-    instance << "body1\n"
-    instance << "body2\n"
-    instance << "body3\n"
-    instance << "\r\n"
-  end
 
   describe "on_message_begin" do
     let(:extension) {

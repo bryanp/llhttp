@@ -1,39 +1,13 @@
 # frozen_string_literal: true
 
-require "llhttp"
+require_relative "../../support/context/parsing"
 
 RSpec.describe "request introspection" do
-  let(:instance) {
-    LLHttp::Parser.new(delegate, type: :request)
+  include_context "parsing"
+
+  let(:type) {
+    :request
   }
-
-  let(:delegate) {
-    local = self
-
-    klass = Class.new(LLHttp::Delegate) {
-      def initialize(context)
-        @context = context
-      end
-
-      class_eval(&local.extension)
-    }
-
-    klass.new(self)
-  }
-
-  let(:extension) {
-    proc {}
-  }
-
-  def parse
-    instance << "GET / HTTP/1.1\r\n"
-    instance << "content-length: 18\r\n"
-    instance << "\r\n"
-    instance << "body1\n"
-    instance << "body2\n"
-    instance << "body3\n"
-    instance << "\r\n"
-  end
 
   describe "content_length" do
     let(:extension) {
