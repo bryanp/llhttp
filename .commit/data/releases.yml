@@ -1,6 +1,13 @@
 ---
 - version: v0.1.0
   changes:
+  - id: 2
+    type: add
+    summary: Support introspection of http major/minor version
+    link: https://github.com/metabahn/llhttp/pull/2
+    author:
+      username: midnight-wonderer
+      link: https://github.com/midnight-wonderer
   - id: 8
     type: add
     summary: Support new *_complete callbacks
