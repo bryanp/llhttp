@@ -43,8 +43,13 @@ RSpec.shared_context "parsing" do
 
   let(:fixtures) {
     {
-      invalid_header: [
+      invalid_request_header: [
         "GET / HTTP/1.1\r\n",
+        "content-length\r\n"
+      ],
+
+      invalid_response_header: [
+        "HTTP/1.1 200 OK\r\n",
         "content-length\r\n"
       ],
 
