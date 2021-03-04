@@ -11,3 +11,7 @@ commit:
 git:
   ignore:
     - "tmp"
+    - "*.bundle"
+    - "*.gem"
+    - "Gemfile.lock"
+    - ".ruby-version"
