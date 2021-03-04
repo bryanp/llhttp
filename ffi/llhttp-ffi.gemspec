@@ -22,4 +22,5 @@ Gem::Specification.new do |spec|
   spec.extensions = %w[ext/Rakefile]
 
   spec.add_dependency "ffi-compiler", "~> 1.0"
+  spec.add_dependency "rake", "~> 13.0"
 end
