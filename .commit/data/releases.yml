@@ -1,6 +1,13 @@
 ---
 - version: v0.1.0
   changes:
+  - id: 10
+    type: chg
+    summary: Only setup callbacks if they are defined on the delegate
+    link: https://github.com/metabahn/llhttp/pull/10
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
   - id: 9
     type: chg
     summary: Update llhttp to 4.0.0
