@@ -1,3 +1,9 @@
+## v0.0.1
+
+*unreleased*
+
+  * `fix` [#13](https://github.com/metabahn/llhttp/pull/13) Resolve an issue with the parser finalizer ([bryanp](https://github.com/bryanp))
+
 ## [v0.0.0](https://github.com/metabahn/llhttp/releases/tag/2021-03-03)
 
 *released on 2021-03-03*
