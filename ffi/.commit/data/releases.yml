@@ -1,0 +1,10 @@
+---
+- version: v0.0.0
+  changes:
+  - id: 12
+    type: add
+    summary: Introduce llhttp-ffi for better compatibility
+    link: https://github.com/metabahn/llhttp/pull/12
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
