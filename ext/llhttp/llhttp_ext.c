@@ -162,7 +162,7 @@ VALUE rb_llhttp_content_length(VALUE self) {
   return ULL2NUM(parser->content_length);
 }
 
-VALUE rb_llhttp_method(VALUE self) {
+VALUE rb_llhttp_method_name(VALUE self) {
   llhttp_t *parser;
 
   Data_Get_Struct(self, llhttp_t, parser);
@@ -303,7 +303,7 @@ void Init_llhttp_ext(void) {
   rb_define_method(cParser, "finish", rb_llhttp_finish, 0);
 
   rb_define_method(cParser, "content_length", rb_llhttp_content_length, 0);
-  rb_define_method(cParser, "method", rb_llhttp_method, 0);
+  rb_define_method(cParser, "method_name", rb_llhttp_method_name, 0);
   rb_define_method(cParser, "status_code", rb_llhttp_status_code, 0);
   rb_define_method(cParser, "http_major", rb_llhttp_http_major, 0);
   rb_define_method(cParser, "http_minor", rb_llhttp_http_minor, 0);

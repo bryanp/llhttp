@@ -2,14 +2,14 @@
 
 require_relative "../support/context/parsing"
 
-RSpec.describe "introspection: method" do
+RSpec.describe "introspection: method name" do
   include_context "parsing"
 
   shared_examples "examples" do
     let(:extension) {
       proc {
         def on_headers_complete
-          @context.instance_variable_set(:@method, @context.instance.method)
+          @context.instance_variable_set(:@method_name, @context.instance.method_name)
         end
       }
     }
@@ -17,7 +17,7 @@ RSpec.describe "introspection: method" do
     it "returns the content" do
       parse
 
-      expect(@method).to eq("GET")
+      expect(@method_name).to eq("GET")
     end
   end
 
