@@ -2,36 +2,7 @@
 
 Ruby bindings for [llhttp](https://github.com/nodejs/llhttp).
 
-## Install
+This is a monorepo that includes projects for MRI and FFI. Generally speaking, you should use MRI unless you can't. Both
+projects are implemented with the exact same features, but the MRI implementation is more performant.
 
-```
-gem install llhttp
-```
-
-## Usage
-
-```ruby
-require "llhttp"
-
-# Define a delegate class for handling callbacks:
-#
-class Delegate < LLHttp::Delegate
-  def on_message_begin
-    ...
-  end
-end
-
-delegate = Delegate.new
-
-# Create a parser:
-#
-parser = LLHttp::Parser.new(delegate)
-
-# Parse a request:
-#
-parser << "GET / HTTP/1.1\r\n\r\n"
-
-# Reset the parser for the next request:
-#
-parser.finish
-```
+Both projects share a test suite, helping ensure parity.

@@ -1,0 +1,51 @@
+commit:
+  changelogs:
+    - label: "commit.changelog-ffi"
+      destination: "./CHANGELOG.md"
+
+  changetypes:
+    - label: "commit.type.add"
+      name: "add"
+    - label: "commit.type.chg"
+      name: "chg"
+    - label: "commit.type.fix"
+      name: "fix"
+    - label: "commit.type.dep"
+      name: "dep"
+
+  includes:
+    - ruby-gem
+    - oss
+
+  externals:
+    - repo: "metabahn/commit-templates"
+      private: true
+
+license:
+  slug: mpl
+  name: "MPL-2.0"
+
+project:
+  slug: "llhttp-ffi"
+  description: "Ruby FFI bindings for llhttp."
+
+  author:
+    name: "Bryan Powell"
+    email: "bryan@metabahn.com"
+    homepage: "https://github.com/metabahn/llhttp/"
+
+  copyright:
+    attribution: "Metabahn"
+    year: 2020
+
+ruby:
+  gem:
+    path: "llhttp"
+    namespace: "LLHttp"
+    extra: |-2
+        spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*", "ext/**/*"]
+        spec.require_path = "lib"
+
+        spec.extensions = %w[ext/Rakefile]
+
+        spec.add_dependency "ffi-compiler", "~> 1.0"

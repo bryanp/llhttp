@@ -3,4 +3,4 @@
 source "https://rubygems.org"
 
 gem "benchmark-ips"
-gem "llhttp", path: "../../mri"
+gem "llhttp-ffi", path: "../../ffi"

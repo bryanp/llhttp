@@ -1,23 +1,6 @@
 commit:
-  changelogs:
-    - label: "commit.changelog"
-      destination: "./CHANGELOG.md"
-
-  changetypes:
-    - label: "commit.type.add"
-      name: "add"
-    - label: "commit.type.chg"
-      name: "chg"
-    - label: "commit.type.fix"
-      name: "fix"
-    - label: "commit.type.dep"
-      name: "dep"
-
   includes:
-    - ruby-gem
-    - ruby-rspec
     - ruby-standard
-    - oss
     - git
     - base
 
@@ -28,29 +11,7 @@ commit:
 git:
   ignore:
     - "tmp"
-
-license:
-  slug: mpl
-  name: "MPL-2.0"
-
-project:
-  slug: "llhttp"
-  description: "Ruby bindings for llhttp."
-
-  author:
-    name: "Bryan Powell"
-    email: "bryan@metabahn.com"
-    homepage: "https://github.com/metabahn/llhttp/"
-
-  copyright:
-    attribution: "Metabahn"
-    year: 2020
-
-ruby:
-  gem:
-    namespace: "LLHttp"
-    extra: |-2
-        spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*", "ext/**/*"]
-        spec.require_path = "lib"
-
-        spec.extensions = %w[ext/llhttp/extconf.rb]
+    - "*.bundle"
+    - "*.gem"
+    - "Gemfile.lock"
+    - ".ruby-version"

@@ -41,7 +41,28 @@ jobs:
         run: |
           CI=true bundle exec standardrb
 
-      - name: Run Tests
+      - name: Install MRI Dependencies
         shell: bash -l -e -o pipefail {0}
+        working-directory: ./mri
+        run: |
+          rm -f Gemfile.lock
+          bundle install --jobs=3 && bundle update --jobs=3
+
+      - name: Run MRI Tests
+        shell: bash -l -e -o pipefail {0}
+        working-directory: ./mri
+        run: |
+          CI=true bundle exec rake test
+
+      - name: Install FFI Dependencies
+        shell: bash -l -e -o pipefail {0}
+        working-directory: ./ffi
+        run: |
+          rm -f Gemfile.lock
+          bundle install --jobs=3 && bundle update --jobs=3
+
+      - name: Run FFI Tests
+        shell: bash -l -e -o pipefail {0}
+        working-directory: ./ffi
         run: |
           CI=true bundle exec rake test
