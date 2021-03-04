@@ -1,4 +1,13 @@
 ---
+- version: v0.0.1
+  changes:
+  - id: 13
+    type: fix
+    summary: Resolve an issue with the parser finalizer
+    link: https://github.com/metabahn/llhttp/pull/13
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.0.0
   date: '2021-03-03'
   link: https://github.com/metabahn/llhttp/releases/tag/2021-03-03
