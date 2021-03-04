@@ -26,7 +26,7 @@ license:
   name: "MPL-2.0"
 
 project:
-  slug: "llhttp"
+  slug: "llhttp-ffi"
   description: "Ruby FFI bindings for llhttp."
 
   author:
@@ -45,4 +45,6 @@ ruby:
         spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*", "ext/**/*"]
         spec.require_path = "lib"
 
-        spec.extensions = %w[ext/llhttp/extconf.rb]
+        spec.extensions = %w[ext/Rakefile]
+
+        spec.add_dependency "ffi-compiler", "~> 1.0"
