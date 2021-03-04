@@ -2,7 +2,9 @@
 
 Ruby bindings for [llhttp](https://github.com/nodejs/llhttp).
 
-This is a monorepo that includes projects for MRI and FFI. Generally speaking, you should use MRI unless you can't. Both
-projects are implemented with the exact same features, but the MRI implementation is more performant.
+This is a monorepo that includes projects for MRI and FFI. Generally speaking, you should prefer the MRI version and
+fallback to the FFI version for better compatibility. There is parity between the two implementations, but the MRI
+implementation is more performant.
 
-Both projects share a test suite, helping ensure parity.
+* [MRI](https://github.com/metabahn/llhttp/tree/main/mri)
+* [FFI](https://github.com/metabahn/llhttp/tree/main/ffi)
