@@ -1,6 +1,6 @@
-## v0.1.0
+## [v0.1.0](https://github.com/metabahn/llhttp/releases/tag/2021-03-03)
 
-*unreleased*
+*released on 2021-03-03*
 
   * `chg` [#11](https://github.com/metabahn/llhttp/pull/11) Rename Parser#method to Parser#method_name ([bryanp](https://github.com/bryanp))
   * `chg` [#10](https://github.com/metabahn/llhttp/pull/10) Only setup callbacks if they are defined on the delegate ([bryanp](https://github.com/bryanp))
