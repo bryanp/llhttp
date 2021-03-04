@@ -1,5 +1,7 @@
 ---
 - version: v0.0.1
+  date: '2021-03-04'
+  link: https://github.com/metabahn/llhttp/releases/tag/2021-03-04
   changes:
   - id: 13
     type: fix
