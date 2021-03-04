@@ -2,6 +2,7 @@
 
 *unreleased*
 
+  * `chg` [#11](https://github.com/metabahn/llhttp/pull/11) Rename Parser#method to Parser#method_name ([bryanp](https://github.com/bryanp))
   * `chg` [#10](https://github.com/metabahn/llhttp/pull/10) Only setup callbacks if they are defined on the delegate ([bryanp](https://github.com/bryanp))
   * `chg` [#9](https://github.com/metabahn/llhttp/pull/9) Update llhttp to 4.0.0 ([bryanp](https://github.com/bryanp))
   * `add` [#2](https://github.com/metabahn/llhttp/pull/2) Support introspection of http major/minor version ([midnight-wonderer](https://github.com/midnight-wonderer))
