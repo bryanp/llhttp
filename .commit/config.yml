@@ -1,6 +1,5 @@
 commit:
   includes:
-    - ruby-rspec
     - ruby-standard
     - git
     - base
