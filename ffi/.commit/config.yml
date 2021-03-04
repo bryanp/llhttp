@@ -36,10 +36,11 @@ project:
 
   copyright:
     attribution: "Metabahn"
-    year: 2021
+    year: 2020
 
 ruby:
   gem:
+    path: "llhttp"
     namespace: "LLHttp"
     extra: |-2
         spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*", "ext/**/*"]
