@@ -1,4 +1,13 @@
 ---
+- version: v0.1.0
+  changes:
+  - id: 14
+    type: chg
+    summary: Update ffi to llhttp 5.1.0
+    link: https://github.com/metabahn/llhttp/pull/14
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.0.1
   date: '2021-03-04'
   link: https://github.com/metabahn/llhttp/releases/tag/2021-03-04
