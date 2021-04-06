@@ -1,4 +1,13 @@
 ---
+- version: v0.2.0
+  changes:
+  - id: 15
+    type: chg
+    summary: Update mri to llhttp 5.1.0
+    link: https://github.com/metabahn/llhttp/pull/15
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.1.0
   date: '2021-03-03'
   link: https://github.com/metabahn/llhttp/releases/tag/2021-03-03
