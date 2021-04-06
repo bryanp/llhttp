@@ -1,5 +1,7 @@
 ---
 - version: v0.1.0
+  date: '2021-04-06'
+  link: https://github.com/metabahn/llhttp/releases/tag/2021-04-06
   changes:
   - id: 14
     type: chg
