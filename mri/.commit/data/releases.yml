@@ -1,4 +1,13 @@
 ---
+- version: v0.3.0
+  changes:
+  - id: 18
+    type: chg
+    summary: Drop support for Ruby 2.5
+    link: https://github.com/metabahn/llhttp/pull/18
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.2.0
   date: '2021-04-06'
   link: https://github.com/metabahn/llhttp/releases/tag/2021-04-06
