@@ -1,6 +1,13 @@
 ---
 - version: v0.2.0
   changes:
+  - id: 17
+    type: chg
+    summary: Update ffi to llhttp 6.0.1
+    link: https://github.com/metabahn/llhttp/pull/17
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
   - id: 18
     type: chg
     summary: Drop support for Ruby 2.5
