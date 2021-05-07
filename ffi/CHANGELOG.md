@@ -1,6 +1,6 @@
-## v0.1.0
+## [v0.1.0](https://github.com/metabahn/llhttp/releases/tag/2021-04-06)
 
-*unreleased*
+*released on 2021-04-06*
 
   * `chg` [#14](https://github.com/metabahn/llhttp/pull/14) Update ffi to llhttp 5.1.0 ([bryanp](https://github.com/bryanp))
 
