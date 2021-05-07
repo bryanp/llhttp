@@ -1,6 +1,6 @@
-## v0.2.0
+## [v0.2.0](https://github.com/metabahn/llhttp/releases/tag/2021-04-06)
 
-*unreleased*
+*released on 2021-04-06*
 
   * `chg` [#15](https://github.com/metabahn/llhttp/pull/15) Update mri to llhttp 5.1.0 ([bryanp](https://github.com/bryanp))
 
