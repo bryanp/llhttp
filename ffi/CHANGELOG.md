@@ -1,6 +1,6 @@
 ## v0.2.0
 
-*unreleased*
+*released on 2021-05-06*
 
   * `chg` [#17](https://github.com/metabahn/llhttp/pull/17) Update ffi to llhttp 6.0.1 ([bryanp](https://github.com/bryanp))
   * `chg` [#18](https://github.com/metabahn/llhttp/pull/18) Drop support for Ruby 2.5 ([bryanp](https://github.com/bryanp))
