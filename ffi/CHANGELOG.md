@@ -1,6 +1,6 @@
 ## v0.3.0
 
-*unreleased*
+*released on 2021-05-13*
 
   * `chg` [#19](https://github.com/metabahn/llhttp/pull/19) Add back support for Ruby 2.5 in ffi ([bryanp](https://github.com/bryanp))
 
