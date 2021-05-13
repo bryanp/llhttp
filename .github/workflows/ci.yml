@@ -10,7 +10,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
 
-    name: ${{ matrix.ruby }}
+    name: Lint ${{ matrix.ruby }}
 
     strategy:
       matrix:
@@ -41,7 +41,7 @@ jobs:
   test-ffi:
     runs-on: ubuntu-latest
 
-    name: ${{ matrix.ruby }}
+    name: Test FFI ${{ matrix.ruby }}
 
     strategy:
       matrix:
@@ -83,7 +83,7 @@ jobs:
   test-mri:
     runs-on: ubuntu-latest
 
-    name: ${{ matrix.ruby }}
+    name: Test MRI ${{ matrix.ruby }}
 
     strategy:
       matrix:
