@@ -1,5 +1,6 @@
 ---
 - version: v0.3.0
+  date: '2021-05-13'
   changes:
   - id: 19
     type: chg
