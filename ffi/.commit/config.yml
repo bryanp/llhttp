@@ -42,6 +42,7 @@ ruby:
   gem:
     path: "llhttp"
     namespace: "LLHttp"
+    version: "2.5.0"
     extra: |-2
         spec.files = Dir["CHANGELOG.md", "README.md", "LICENSE", "lib/**/*", "ext/**/*"]
         spec.require_path = "lib"

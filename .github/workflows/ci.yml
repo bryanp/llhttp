@@ -7,7 +7,38 @@ on:
   push:
 
 jobs:
-  test-ruby:
+  lint:
+    runs-on: ubuntu-latest
+
+    name: ${{ matrix.ruby }}
+
+    strategy:
+      matrix:
+        ruby:
+          - 2.5
+
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "${{matrix.ruby}}"
+
+      - name: Install Dependencies
+        shell: bash -l -e -o pipefail {0}
+        run: |
+          rm -f Gemfile.lock
+          bundle install --jobs=3 && bundle update --jobs=3
+
+      - name: Run Linter
+        shell: bash -l -e -o pipefail {0}
+        run: |
+          CI=true bundle exec standardrb
+
+  test-ffi:
     runs-on: ubuntu-latest
 
     name: ${{ matrix.ruby }}
@@ -36,10 +67,46 @@ jobs:
           rm -f Gemfile.lock
           bundle install --jobs=3 && bundle update --jobs=3
 
-      - name: Run Linter
+      - name: Install FFI Dependencies
+        shell: bash -l -e -o pipefail {0}
+        working-directory: ./ffi
+        run: |
+          rm -f Gemfile.lock
+          bundle install --jobs=3 && bundle update --jobs=3
+
+      - name: Run FFI Tests
+        shell: bash -l -e -o pipefail {0}
+        working-directory: ./ffi
+        run: |
+          CI=true bundle exec rake test
+
+  test-mri:
+    runs-on: ubuntu-latest
+
+    name: ${{ matrix.ruby }}
+
+    strategy:
+      matrix:
+        ruby:
+          - 2.6
+          - 2.7
+          - 3.0
+
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "${{matrix.ruby}}"
+
+      - name: Install Dependencies
         shell: bash -l -e -o pipefail {0}
         run: |
-          CI=true bundle exec standardrb
+          rm -f Gemfile.lock
+          bundle install --jobs=3 && bundle update --jobs=3
 
       - name: Install MRI Dependencies
         shell: bash -l -e -o pipefail {0}
@@ -51,18 +118,5 @@ jobs:
       - name: Run MRI Tests
         shell: bash -l -e -o pipefail {0}
         working-directory: ./mri
-        run: |
-          CI=true bundle exec rake test
-
-      - name: Install FFI Dependencies
-        shell: bash -l -e -o pipefail {0}
-        working-directory: ./ffi
-        run: |
-          rm -f Gemfile.lock
-          bundle install --jobs=3 && bundle update --jobs=3
-
-      - name: Run FFI Tests
-        shell: bash -l -e -o pipefail {0}
-        working-directory: ./ffi
         run: |
           CI=true bundle exec rake test
