@@ -152,7 +152,7 @@ module LLHttp
     end
 
     def self.free(pointer)
-      proc { LLHttp.llhttp_free(pointer) }
+      proc { LLHttp.rb_llhttp_free(pointer) }
     end
   end
 end
