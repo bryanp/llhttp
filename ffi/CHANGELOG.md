@@ -1,16 +1,16 @@
-## v0.3.1
+## [v0.3.1](https://github.com/metabahn/llhttp/releases/tag/2021-06-25)
 
-*unreleased*
+*released on 2021-06-25*
 
   * `fix` [#22](https://github.com/metabahn/llhttp/pull/22) Fix call to ffi free ([bryanp](https://github.com/bryanp))
 
-## v0.3.0
+## [v0.3.0](https://github.com/metabahn/llhttp/releases/tag/2021-05-13)
 
 *released on 2021-05-13*
 
   * `chg` [#19](https://github.com/metabahn/llhttp/pull/19) Add back support for Ruby 2.5 in ffi ([bryanp](https://github.com/bryanp))
 
-## v0.2.0
+## [v0.2.0](https://github.com/metabahn/llhttp/releases/tag/2021-05-06)
 
 *released on 2021-05-06*
 
