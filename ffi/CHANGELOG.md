@@ -1,3 +1,9 @@
+## v0.3.1
+
+*unreleased*
+
+  * `fix` [#22](https://github.com/metabahn/llhttp/pull/22) Fix call to ffi free ([bryanp](https://github.com/bryanp))
+
 ## v0.3.0
 
 *released on 2021-05-13*
