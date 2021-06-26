@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module LLHttp
-  VERSION = "0.3.0"
+  VERSION = "0.3.1"
 
   # [public] LLHttp's current version.
   #
