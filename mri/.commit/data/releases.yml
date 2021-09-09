@@ -1,4 +1,13 @@
 ---
+- version: v0.4.0
+  changes:
+  - id: 24
+    type: chg
+    summary: Update mri to llhttp 6.0.5
+    link: https://github.com/metabahn/llhttp/pull/24
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.3.0
   date: '2021-05-06'
   changes:
