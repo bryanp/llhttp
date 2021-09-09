@@ -1,4 +1,13 @@
 ---
+- version: v0.4.0
+  changes:
+  - id: 23
+    type: chg
+    summary: Update ffi to llhttp 6.0.5
+    link: https://github.com/metabahn/llhttp/pull/23
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.3.1
   date: '2021-06-25'
   link: https://github.com/metabahn/llhttp/releases/tag/2021-06-25
