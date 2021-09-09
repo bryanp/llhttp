@@ -1,5 +1,6 @@
 ---
 - version: v0.4.0
+  date: '2021-09-09'
   changes:
   - id: 25
     type: add
