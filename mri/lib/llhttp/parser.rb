@@ -30,6 +30,10 @@ module LLHttp
   #
   #   Call `LLHttp::Parser#finish` when processing is complete for the current request or response.
   #
+  # Resetting
+  #
+  #   Call `LLHttp::Parser#reset` to reset the parser for the next request or response.
+  #
   class Parser
     LLHTTP_TYPES = {both: 0, request: 1, response: 2}.freeze
 

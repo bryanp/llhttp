@@ -154,6 +154,18 @@ VALUE rb_llhttp_finish(VALUE self) {
   return Qtrue;
 }
 
+VALUE rb_llhttp_reset(VALUE self) {
+  llhttp_t *parser;
+
+  Data_Get_Struct(self, llhttp_t, parser);
+
+  llhttp_settings_t *settings = parser->settings;
+
+  llhttp_reset(parser);
+
+  return Qtrue;
+}
+
 VALUE rb_llhttp_content_length(VALUE self) {
   llhttp_t *parser;
 
@@ -301,6 +313,7 @@ void Init_llhttp_ext(void) {
   rb_define_method(cParser, "<<", rb_llhttp_parse, 1);
   rb_define_method(cParser, "parse", rb_llhttp_parse, 1);
   rb_define_method(cParser, "finish", rb_llhttp_finish, 0);
+  rb_define_method(cParser, "reset", rb_llhttp_reset, 0);
 
   rb_define_method(cParser, "content_length", rb_llhttp_content_length, 0);
   rb_define_method(cParser, "method_name", rb_llhttp_method_name, 0);

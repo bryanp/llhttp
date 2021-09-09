@@ -101,6 +101,10 @@ RSpec.shared_context "parsing" do
         "body2\n",
         "body3\n",
         "\r\n"
+      ],
+
+      response_sans_content_length: [
+        "HTTP/1.1 200 OK\r\n\r\n"
       ]
     }
   }

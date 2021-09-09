@@ -117,10 +117,16 @@ module LLHttp
       LLHttp.llhttp_should_keep_alive(@pointer) == 1
     end
 
-    # [public] Get ready to parse the next request.
+    # [public] Tells the parser we are finished.
     #
     def finish
       LLHttp.llhttp_finish(@pointer)
+    end
+
+    # [public] Get ready to parse the next request/response.
+    #
+    def reset
+      LLHttp.llhttp_reset(@pointer)
     end
 
     CALLBACKS.each do |callback|
