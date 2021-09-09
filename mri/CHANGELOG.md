@@ -2,6 +2,7 @@
 
 *unreleased*
 
+  * `add` [#25](https://github.com/metabahn/llhttp/pull/25) Add support for resetting the parser ([bryanp](https://github.com/bryanp))
   * `chg` [#24](https://github.com/metabahn/llhttp/pull/24) Update mri to llhttp 6.0.5 ([bryanp](https://github.com/bryanp))
 
 ## v0.3.0
