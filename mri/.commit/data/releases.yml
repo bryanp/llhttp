@@ -1,6 +1,13 @@
 ---
 - version: v0.4.0
   changes:
+  - id: 25
+    type: add
+    summary: Add support for resetting the parser
+    link: https://github.com/metabahn/llhttp/pull/25
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
   - id: 24
     type: chg
     summary: Update mri to llhttp 6.0.5
