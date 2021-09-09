@@ -49,7 +49,7 @@ class Server
   ensure
     stream.close
 
-    @parser.finish
+    @parser.reset
   end
 
   private def parse_next(stream)

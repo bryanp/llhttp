@@ -33,5 +33,5 @@ parser << "GET / HTTP/1.1\r\n\r\n"
 
 # Reset the parser for the next request:
 #
-parser.finish
+parser.reset
 ```

@@ -2,7 +2,7 @@
 
 require_relative "support/context/parsing"
 
-RSpec.describe "reusing a parser instance" do
+RSpec.describe "parsing responses without a content length" do
   include_context "parsing"
 
   shared_examples "examples" do
@@ -42,25 +42,21 @@ RSpec.describe "reusing a parser instance" do
       end
 
       expect(delegate.calls.count(:on_message_begin)).to eq(10_000)
-      expect(delegate.calls.count(:on_header_field)).to eq(20_000)
-      expect(delegate.calls.count(:on_header_value)).to eq(20_000)
+      expect(delegate.calls.count(:on_header_field)).to eq(0)
+      expect(delegate.calls.count(:on_header_value)).to eq(0)
       expect(delegate.calls.count(:on_headers_complete)).to eq(10_000)
-      expect(delegate.calls.count(:on_body)).to eq(30_000)
-      expect(delegate.calls.count(:on_message_complete)).to eq(10_000)
+      expect(delegate.calls.count(:on_body)).to eq(0)
+      expect(delegate.calls.count(:on_message_complete)).to eq(0)
     end
-  end
-
-  context "request" do
-    let(:type) {
-      :request
-    }
-
-    include_examples "examples"
   end
 
   context "response" do
     let(:type) {
       :response
+    }
+
+    let(:fixture) {
+      :response_sans_content_length
     }
 
     include_examples "examples"

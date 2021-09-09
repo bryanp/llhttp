@@ -45,4 +45,5 @@ module LLHttp
   attach_function :llhttp_get_error_reason, [:pointer], :string
   attach_function :llhttp_should_keep_alive, [:pointer], :int
   attach_function :llhttp_finish, [:pointer], :int
+  attach_function :llhttp_reset, [:pointer], :void
 end
