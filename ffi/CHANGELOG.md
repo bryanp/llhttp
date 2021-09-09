@@ -1,3 +1,9 @@
+## v0.4.0
+
+*unreleased*
+
+  * `chg` [#23](https://github.com/metabahn/llhttp/pull/23) Update ffi to llhttp 6.0.5 ([bryanp](https://github.com/bryanp))
+
 ## [v0.3.1](https://github.com/metabahn/llhttp/releases/tag/2021-06-25)
 
 *released on 2021-06-25*
