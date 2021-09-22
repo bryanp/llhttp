@@ -1,3 +1,9 @@
+## v0.5.0
+
+*unreleased*
+
+  * `chg` [#26](https://github.com/metabahn/llhttp/pull/26) Refactor parser data to include all values ([bryanp](https://github.com/bryanp))
+
 ## v0.4.0
 
 *released on 2021-09-09*
