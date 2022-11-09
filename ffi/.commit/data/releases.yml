@@ -5,87 +5,87 @@
   - id: 25
     type: add
     summary: Add support for resetting the parser
-    link: https://github.com/metabahn/llhttp/pull/25
+    link: https://github.com/bryanp/llhttp/pull/25
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 23
     type: chg
     summary: Update ffi to llhttp 6.0.5
-    link: https://github.com/metabahn/llhttp/pull/23
+    link: https://github.com/bryanp/llhttp/pull/23
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.3.1
   date: '2021-06-25'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-06-25
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-06-25
   changes:
   - id: 22
     type: fix
     summary: Fix call to ffi free
-    link: https://github.com/metabahn/llhttp/pull/22
+    link: https://github.com/bryanp/llhttp/pull/22
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.3.0
   date: '2021-05-13'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-05-13
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-05-13
   changes:
   - id: 19
     type: chg
     summary: Add back support for Ruby 2.5 in ffi
-    link: https://github.com/metabahn/llhttp/pull/19
+    link: https://github.com/bryanp/llhttp/pull/19
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.2.0
   date: '2021-05-06'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-05-06
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-05-06
   changes:
   - id: 17
     type: chg
     summary: Update ffi to llhttp 6.0.1
-    link: https://github.com/metabahn/llhttp/pull/17
+    link: https://github.com/bryanp/llhttp/pull/17
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 18
     type: chg
     summary: Drop support for Ruby 2.5
-    link: https://github.com/metabahn/llhttp/pull/18
+    link: https://github.com/bryanp/llhttp/pull/18
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.1.0
   date: '2021-04-06'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-04-06
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-04-06
   changes:
   - id: 14
     type: chg
     summary: Update ffi to llhttp 5.1.0
-    link: https://github.com/metabahn/llhttp/pull/14
+    link: https://github.com/bryanp/llhttp/pull/14
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.0.1
   date: '2021-03-04'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-03-04
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-03-04
   changes:
   - id: 13
     type: fix
     summary: Resolve an issue with the parser finalizer
-    link: https://github.com/metabahn/llhttp/pull/13
+    link: https://github.com/bryanp/llhttp/pull/13
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.0.0
   date: '2021-03-03'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-03-03
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-03-03
   changes:
   - id: 12
     type: add
     summary: Introduce llhttp-ffi for better compatibility
-    link: https://github.com/metabahn/llhttp/pull/12
+    link: https://github.com/bryanp/llhttp/pull/12
     author:
       username: bryanp
       link: https://github.com/bryanp

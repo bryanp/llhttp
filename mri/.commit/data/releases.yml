@@ -1,134 +1,134 @@
 ---
 - version: v0.5.0
   date: '2021-09-21'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-09-21
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-09-21
   changes:
   - id: 26
     type: chg
     summary: Refactor parser data to include all values
-    link: https://github.com/metabahn/llhttp/pull/26
+    link: https://github.com/bryanp/llhttp/pull/26
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.4.0
   date: '2021-09-09'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-09-09
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-09-09
   changes:
   - id: 25
     type: add
     summary: Add support for resetting the parser
-    link: https://github.com/metabahn/llhttp/pull/25
+    link: https://github.com/bryanp/llhttp/pull/25
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 24
     type: chg
     summary: Update mri to llhttp 6.0.5
-    link: https://github.com/metabahn/llhttp/pull/24
+    link: https://github.com/bryanp/llhttp/pull/24
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.3.0
   date: '2021-05-06'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-05-06
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-05-06
   changes:
   - id: 16
     type: chg
     summary: Update mri to llhttp 6.0.1
-    link: https://github.com/metabahn/llhttp/pull/16
+    link: https://github.com/bryanp/llhttp/pull/16
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 18
     type: chg
     summary: Drop support for Ruby 2.5
-    link: https://github.com/metabahn/llhttp/pull/18
+    link: https://github.com/bryanp/llhttp/pull/18
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.2.0
   date: '2021-04-06'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-04-06
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-04-06
   changes:
   - id: 15
     type: chg
     summary: Update mri to llhttp 5.1.0
-    link: https://github.com/metabahn/llhttp/pull/15
+    link: https://github.com/bryanp/llhttp/pull/15
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.1.0
   date: '2021-03-03'
-  link: https://github.com/metabahn/llhttp/releases/tag/2021-03-03
+  link: https://github.com/bryanp/llhttp/releases/tag/2021-03-03
   changes:
   - id: 11
     type: chg
     summary: Rename Parser#method to Parser#method_name
-    link: https://github.com/metabahn/llhttp/pull/11
+    link: https://github.com/bryanp/llhttp/pull/11
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 10
     type: chg
     summary: Only setup callbacks if they are defined on the delegate
-    link: https://github.com/metabahn/llhttp/pull/10
+    link: https://github.com/bryanp/llhttp/pull/10
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 9
     type: chg
     summary: Update llhttp to 4.0.0
-    link: https://github.com/metabahn/llhttp/pull/9
+    link: https://github.com/bryanp/llhttp/pull/9
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 2
     type: add
     summary: Support introspection of http major/minor version
-    link: https://github.com/metabahn/llhttp/pull/2
+    link: https://github.com/bryanp/llhttp/pull/2
     author:
       username: midnight-wonderer
       link: https://github.com/midnight-wonderer
   - id: 8
     type: add
     summary: Support new *_complete callbacks
-    link: https://github.com/metabahn/llhttp/pull/8
+    link: https://github.com/bryanp/llhttp/pull/8
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 7
     type: chg
     summary: Return an error status from the appropriate callbacks
-    link: https://github.com/metabahn/llhttp/pull/7
+    link: https://github.com/bryanp/llhttp/pull/7
     author:
       username: bryanp
       link: https://github.com/bryanp
   - id: 6
     type: chg
     summary: Update llhttp to 3.0.1
-    link: https://github.com/metabahn/llhttp/pull/6
+    link: https://github.com/bryanp/llhttp/pull/6
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.0.3
   date: '2020-12-30'
-  link: https://github.com/metabahn/llhttp/releases/tag/v0.0.3
+  link: https://github.com/bryanp/llhttp/releases/tag/v0.0.3
   changes:
   - id: 5
     type: fix
     summary: Build the extension correctly
-    link: https://github.com/metabahn/llhttp/pull/5
+    link: https://github.com/bryanp/llhttp/pull/5
     author:
       username: bryanp
       link: https://github.com/bryanp
 - version: v0.0.2
   date: '2020-10-11'
-  link: https://github.com/metabahn/llhttp/releases/tag/v0.0.2
+  link: https://github.com/bryanp/llhttp/releases/tag/v0.0.2
   changes:
   - type: fix
     summary: Correctly free parser settings when freeing the parser.
 - version: v0.0.1
   date: '2020-10-11'
-  link: https://github.com/metabahn/llhttp/releases/tag/v0.0.1
+  link: https://github.com/bryanp/llhttp/releases/tag/v0.0.1
   changes:
   - summary: Initial release.

@@ -31,8 +31,8 @@ project:
 
   author:
     name: "Bryan Powell"
-    email: "bryan@metabahn.com"
-    homepage: "https://github.com/metabahn/llhttp/"
+    email: "bryan@bryanp.org"
+    homepage: "https://github.com/bryanp/llhttp/"
 
   copyright:
     attribution: "Metabahn"
