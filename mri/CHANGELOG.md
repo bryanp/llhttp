@@ -1,3 +1,9 @@
+## v0.6.0
+
+*unreleased*
+
+  * `chg` [#28](https://github.com/bryanp/llhttp/pull/28) Update mri to llhttp 8.1.0 ([bryanp](https://github.com/bryanp))
+
 ## [v0.5.0](https://github.com/bryanp/llhttp/releases/tag/2021-09-21)
 
 *released on 2021-09-21*
