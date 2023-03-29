@@ -1,5 +1,7 @@
 ---
 - version: v0.6.0
+  date: '2023-03-29'
+  link: https://github.com/bryanp/llhttp/releases/tag/2023-03-29
   changes:
   - id: 28
     type: chg
