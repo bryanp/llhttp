@@ -1,4 +1,14 @@
 ---
+- version: v0.5.0
+  date: '2023-03-28'
+  changes:
+  - id: 27
+    type: chg
+    summary: Update ffi to llhttp 8.1.0
+    link: https://github.com/bryanp/llhttp/pull/27
+    author:
+      username: bryanp
+      link: https://github.com/bryanp
 - version: v0.4.0
   date: '2021-09-09'
   changes:
