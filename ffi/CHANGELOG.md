@@ -1,6 +1,6 @@
-## v0.5.0
+## [v0.5.0](https://github.com/bryanp/llhttp/releases/tag/2023-03-29)
 
-*unreleased*
+*released on 2023-03-29*
 
   * `chg` [#27](https://github.com/bryanp/llhttp/pull/27) Update ffi to llhttp 8.1.0 ([bryanp](https://github.com/bryanp))
 
@@ -47,5 +47,3 @@
 *released on 2021-03-03*
 
   * `add` [#12](https://github.com/bryanp/llhttp/pull/12) Introduce llhttp-ffi for better compatibility ([bryanp](https://github.com/bryanp))
-
-

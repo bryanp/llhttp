@@ -1,6 +1,6 @@
-## v0.6.0
+## [v0.6.0](https://github.com/bryanp/llhttp/releases/tag/2023-03-29)
 
-*unreleased*
+*released on 2023-03-29*
 
   * `chg` [#28](https://github.com/bryanp/llhttp/pull/28) Update mri to llhttp 8.1.0 ([bryanp](https://github.com/bryanp))
 
@@ -59,5 +59,3 @@
 *released on 2020-10-11*
 
   * Initial release.
-
-
