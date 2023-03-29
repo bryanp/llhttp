@@ -1,6 +1,6 @@
 ## v0.5.0
 
-*released on 2023-03-28*
+*unreleased*
 
   * `chg` [#27](https://github.com/bryanp/llhttp/pull/27) Update ffi to llhttp 8.1.0 ([bryanp](https://github.com/bryanp))
 
