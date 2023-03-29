@@ -16,6 +16,8 @@ task :clean do
   [
     "./lib/llhttp/llhttp_ext.bundle"
   ].each do |file|
+    next unless File.exist?(file)
+
     FileUtils.rm(file)
   end
 end
