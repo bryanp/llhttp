@@ -31,7 +31,7 @@ class Server
     @endpoint.accept(&method(:accept))
   end
 
-  private def accept(client, address, task:)
+  private def accept(client, address)
     while parse_next(client)
       client.write("HTTP/1.1 204 No Content\r\n")
       client.write("content-length: 0\r\n\r\n")
@@ -39,7 +39,7 @@ class Server
 
       @delegate.reset
 
-      task.yield
+      sleep(0)
     end
   ensure
     client.close
