@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "timeout"
-require "async/io"
+require "io/endpoint/host_endpoint"
 require "llhttp"
 
 require_relative "support/server"
@@ -9,7 +9,7 @@ require_relative "support/server"
 RSpec.describe "parsing in context of a server" do
   before do
     @pid = Process.fork {
-      endpoint = Async::IO::Endpoint.tcp("0.0.0.0", 9000)
+      endpoint = IO::Endpoint.tcp("0.0.0.0", 9000)
 
       Async do
         Server.new(endpoint).run

@@ -35,25 +35,23 @@ class Server
   end
 
   private def accept(client, address, task:)
-    stream = Async::IO::Stream.new(client, sync: false)
-
-    while parse_next(stream)
-      stream.write("HTTP/1.1 204 No Content\r\n")
-      stream.write("content-length: 0\r\n\r\n")
-      stream.flush
+    while parse_next(client)
+      client.write("HTTP/1.1 204 No Content\r\n")
+      client.write("content-length: 0\r\n\r\n")
+      client.flush
 
       @delegate.reset
 
       task.yield
     end
   ensure
-    stream.close
+    client.close
 
     @parser.reset
   end
 
   private def parse_next(stream)
-    while (line = stream.read_until(CRLF, chomp: false))
+    while (line = stream.gets(CRLF, chomp: false))
       @parser << line
 
       if @delegate.finished_headers?
