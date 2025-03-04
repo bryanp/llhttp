@@ -6,9 +6,11 @@ gemspec
 
 group :development do
   gem "rake-compiler"
+  gem "rake"
 end
 
 group :test do
-  gem "async-io"
+  gem "async"
+  gem "io-endpoint"
   gem "rspec"
 end
