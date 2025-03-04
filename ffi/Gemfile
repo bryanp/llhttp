@@ -9,6 +9,5 @@ group :development do
 end
 
 group :test do
-  gem "async-io"
   gem "rspec"
 end
