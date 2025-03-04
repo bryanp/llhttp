@@ -10,7 +10,6 @@ require_relative "support/server"
 
 RSpec.describe "parsing in context of a server" do
   before do
-    $stderr.puts "Starting server..."
     endpoint = IO::Endpoint.tcp("0.0.0.0", 9000, reuse_address: true)
     @bound_endpoint = endpoint.bound
 
@@ -26,7 +25,6 @@ RSpec.describe "parsing in context of a server" do
 
   after do
     Process.kill("HUP", @pid)
-    $stderr.puts "Waiting for server to stop..."
     Process.wait(@pid)
     @bound_endpoint&.close
   end
