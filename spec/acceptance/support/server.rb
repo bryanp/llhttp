@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "async/io"
-require "async/io/stream"
-
 class Delegate < LLHttp::Delegate
   def initialize
     @finished_headers = false
