@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.email = "bryan@bryanp.org"
   spec.homepage = "https://github.com/bryanp/llhttp/"
 
-  spec.required_ruby_version = ">= 2.6.7"
+  spec.required_ruby_version = ">= 3.0"
 
   spec.license = "MPL-2.0"
 

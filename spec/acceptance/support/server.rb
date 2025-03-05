@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require "async/io"
-require "async/io/stream"
-
 class Delegate < LLHttp::Delegate
   def initialize
     @finished_headers = false
@@ -34,26 +31,24 @@ class Server
     @endpoint.accept(&method(:accept))
   end
 
-  private def accept(client, address, task:)
-    stream = Async::IO::Stream.new(client, sync: false)
-
-    while parse_next(stream)
-      stream.write("HTTP/1.1 204 No Content\r\n")
-      stream.write("content-length: 0\r\n\r\n")
-      stream.flush
+  private def accept(client, address)
+    while parse_next(client)
+      client.write("HTTP/1.1 204 No Content\r\n")
+      client.write("content-length: 0\r\n\r\n")
+      client.flush
 
       @delegate.reset
 
-      task.yield
+      sleep(0)
     end
   ensure
-    stream.close
+    client.close
 
     @parser.reset
   end
 
   private def parse_next(stream)
-    while (line = stream.read_until(CRLF, chomp: false))
+    while (line = stream.gets(CRLF, chomp: false))
       @parser << line
 
       if @delegate.finished_headers?
