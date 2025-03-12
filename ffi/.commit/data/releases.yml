@@ -1,102 +1,113 @@
 ---
+- version: v0.5.1
+  date: "2025-03-11"
+  link: https://github.com/bryanp/llhttp/releases/tag/2025-03-11
+  changes:
+    - id: 32
+      type: chg
+      summary: Remove Async::IO dependency
+      link: https://github.com/bryanp/llhttp/pull/32
+      author:
+        username: ioquatix
+        link: https://github.com/ioquatix
 - version: v0.5.0
-  date: '2023-03-29'
+  date: "2023-03-29"
   link: https://github.com/bryanp/llhttp/releases/tag/2023-03-29
   changes:
-  - id: 27
-    type: chg
-    summary: Update ffi to llhttp 8.1.0
-    link: https://github.com/bryanp/llhttp/pull/27
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 27
+      type: chg
+      summary: Update ffi to llhttp 8.1.0
+      link: https://github.com/bryanp/llhttp/pull/27
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.4.0
-  date: '2021-09-09'
+  date: "2021-09-09"
   changes:
-  - id: 25
-    type: add
-    summary: Add support for resetting the parser
-    link: https://github.com/bryanp/llhttp/pull/25
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
-  - id: 23
-    type: chg
-    summary: Update ffi to llhttp 6.0.5
-    link: https://github.com/bryanp/llhttp/pull/23
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 25
+      type: add
+      summary: Add support for resetting the parser
+      link: https://github.com/bryanp/llhttp/pull/25
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
+    - id: 23
+      type: chg
+      summary: Update ffi to llhttp 6.0.5
+      link: https://github.com/bryanp/llhttp/pull/23
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.3.1
-  date: '2021-06-25'
+  date: "2021-06-25"
   link: https://github.com/bryanp/llhttp/releases/tag/2021-06-25
   changes:
-  - id: 22
-    type: fix
-    summary: Fix call to ffi free
-    link: https://github.com/bryanp/llhttp/pull/22
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 22
+      type: fix
+      summary: Fix call to ffi free
+      link: https://github.com/bryanp/llhttp/pull/22
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.3.0
-  date: '2021-05-13'
+  date: "2021-05-13"
   link: https://github.com/bryanp/llhttp/releases/tag/2021-05-13
   changes:
-  - id: 19
-    type: chg
-    summary: Add back support for Ruby 2.5 in ffi
-    link: https://github.com/bryanp/llhttp/pull/19
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 19
+      type: chg
+      summary: Add back support for Ruby 2.5 in ffi
+      link: https://github.com/bryanp/llhttp/pull/19
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.2.0
-  date: '2021-05-06'
+  date: "2021-05-06"
   link: https://github.com/bryanp/llhttp/releases/tag/2021-05-06
   changes:
-  - id: 17
-    type: chg
-    summary: Update ffi to llhttp 6.0.1
-    link: https://github.com/bryanp/llhttp/pull/17
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
-  - id: 18
-    type: chg
-    summary: Drop support for Ruby 2.5
-    link: https://github.com/bryanp/llhttp/pull/18
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 17
+      type: chg
+      summary: Update ffi to llhttp 6.0.1
+      link: https://github.com/bryanp/llhttp/pull/17
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
+    - id: 18
+      type: chg
+      summary: Drop support for Ruby 2.5
+      link: https://github.com/bryanp/llhttp/pull/18
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.1.0
-  date: '2021-04-06'
+  date: "2021-04-06"
   link: https://github.com/bryanp/llhttp/releases/tag/2021-04-06
   changes:
-  - id: 14
-    type: chg
-    summary: Update ffi to llhttp 5.1.0
-    link: https://github.com/bryanp/llhttp/pull/14
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 14
+      type: chg
+      summary: Update ffi to llhttp 5.1.0
+      link: https://github.com/bryanp/llhttp/pull/14
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.0.1
-  date: '2021-03-04'
+  date: "2021-03-04"
   link: https://github.com/bryanp/llhttp/releases/tag/2021-03-04
   changes:
-  - id: 13
-    type: fix
-    summary: Resolve an issue with the parser finalizer
-    link: https://github.com/bryanp/llhttp/pull/13
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 13
+      type: fix
+      summary: Resolve an issue with the parser finalizer
+      link: https://github.com/bryanp/llhttp/pull/13
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
 - version: v0.0.0
-  date: '2021-03-03'
+  date: "2021-03-03"
   link: https://github.com/bryanp/llhttp/releases/tag/2021-03-03
   changes:
-  - id: 12
-    type: add
-    summary: Introduce llhttp-ffi for better compatibility
-    link: https://github.com/bryanp/llhttp/pull/12
-    author:
-      username: bryanp
-      link: https://github.com/bryanp
+    - id: 12
+      type: add
+      summary: Introduce llhttp-ffi for better compatibility
+      link: https://github.com/bryanp/llhttp/pull/12
+      author:
+        username: bryanp
+        link: https://github.com/bryanp
