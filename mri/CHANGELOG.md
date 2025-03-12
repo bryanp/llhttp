@@ -1,8 +1,8 @@
-## [v0.6.0](https://github.com/bryanp/llhttp/releases/tag/2023-03-29)
+## [v0.6.1](https://github.com/bryanp/llhttp/releases/tag/2025-03-11)
 
-*released on 2023-03-29*
+*released on 2025-03-11*
 
-  * `chg` [#28](https://github.com/bryanp/llhttp/pull/28) Update mri to llhttp 8.1.0 ([bryanp](https://github.com/bryanp))
+  * `chg` [#32](https://github.com/bryanp/llhttp/pull/32) Remove Async::IO dependency ([ioquatix](https://github.com/ioquatix))
 
 ## [v0.5.0](https://github.com/bryanp/llhttp/releases/tag/2021-09-21)
 
