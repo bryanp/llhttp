@@ -1,3 +1,9 @@
+## [v0.5.1](https://github.com/bryanp/llhttp/releases/tag/2025-03-11)
+
+*released on 2025-03-11*
+
+  * `chg` [#32](https://github.com/bryanp/llhttp/pull/32) Remove Async::IO dependency ([ioquatix](https://github.com/ioquatix))
+
 ## [v0.5.0](https://github.com/bryanp/llhttp/releases/tag/2023-03-29)
 
 *released on 2023-03-29*
