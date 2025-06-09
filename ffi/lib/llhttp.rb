@@ -10,6 +10,7 @@ module LLHttp
   require_relative "llhttp/version"
 
   extend FFI::Library
+
   ffi_lib(FFI::Compiler::Loader.find("llhttp-ext"))
 
   callback :llhttp_data_cb, [:pointer, :size_t], :void
