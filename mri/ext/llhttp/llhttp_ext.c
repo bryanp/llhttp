@@ -341,6 +341,10 @@ static VALUE rb_llhttp_init(VALUE self, VALUE type) {
 }
 
 void Init_llhttp_ext(void) {
+#ifdef HAVE_RB_EXT_RACTOR_SAFE
+  rb_ext_ractor_safe(true);
+#endif
+
   mLLHttp = rb_const_get(rb_cObject, rb_intern("LLHttp"));
   cParser = rb_const_get(mLLHttp, rb_intern("Parser"));
   eError = rb_const_get(mLLHttp, rb_intern("Error"));
