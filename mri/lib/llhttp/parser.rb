@@ -49,4 +49,4 @@ module LLHttp
   end
 end
 
-require_relative "../llhttp_ext"
+require "llhttp_ext"

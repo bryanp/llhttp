@@ -12,5 +12,9 @@ end
 group :test do
   gem "async"
   gem "io-endpoint"
+  # io-event 1.9.0 broke the compat with our "fork based test"
+  # See discussion in https://github.com/bryanp/llhttp/pull/34
+  #               and https://github.com/socketry/io-event/issues/36
+  gem "io-event", "~> 1.8.0"
   gem "rspec"
 end
