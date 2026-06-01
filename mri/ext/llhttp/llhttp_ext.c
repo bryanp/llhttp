@@ -42,13 +42,14 @@ static void rb_llhttp_free(llhttp_t *parser) {
 }
 
 VALUE rb_llhttp_allocate(VALUE klass) {
-  llhttp_t *parser = (llhttp_t *)malloc(sizeof(llhttp_t));
+  llhttp_t *parser;
+  VALUE self = Data_Make_Struct(klass, llhttp_t, 0, rb_llhttp_free, parser);
 
   // Set data to false so we know when the parser has been initialized.
   //
   parser->data = 0;
 
-  return Data_Wrap_Struct(klass, 0, rb_llhttp_free, parser);
+  return self;
 }
 
 VALUE rb_llhttp_callback_call(VALUE delegate, ID method) {
