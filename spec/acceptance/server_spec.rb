@@ -29,9 +29,22 @@ RSpec.describe "parsing in context of a server" do
     @bound_endpoint&.close
   end
 
-  it "parses" do
-    Timeout.timeout(1) do
-      expect(system("curl -v http://localhost:9000")).to be(true)
+  # The async-based test server requires Ruby >= 3.2: newer async drops 3.1, so
+  # on older Rubies bundle resolves to a stack that can't serve the request.
+  # llhttp core is still exercised by the rest of the suite on those versions.
+  it "parses", skip: RUBY_VERSION < "3.2" && "async test server requires Ruby >= 3.2" do
+    # Poll until the forked server is accepting and responding rather than
+    # asserting on a single curl under a tight timeout, so a slow fork + Async
+    # reactor cold start on a loaded CI runner costs a few retries, not a
+    # spurious failure.
+    result = false
+
+    Timeout.timeout(10) do
+      until (result = system("curl -sf http://localhost:9000", out: File::NULL, err: File::NULL))
+        sleep(0.05)
+      end
     end
+
+    expect(result).to be(true)
   end
 end
