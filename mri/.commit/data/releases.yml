@@ -1,4 +1,22 @@
 ---
+- version: v0.6.2
+  date: "2026-06-28"
+  link: https://github.com/bryanp/llhttp/releases/tag/2026-06-28
+  changes:
+    - id: 37
+      type: chg
+      summary: Use the typed data API for Ruby 4 compatibility
+      link: https://github.com/bryanp/llhttp/pull/37
+      author:
+        username: nobu
+        link: https://github.com/nobu
+    - id: 35
+      type: chg
+      summary: Declare functions as Ractor-safe
+      link: https://github.com/bryanp/llhttp/pull/35
+      author:
+        username: jhawthorn
+        link: https://github.com/jhawthorn
 - version: v0.6.1
   date: "2025-03-11"
   link: https://github.com/bryanp/llhttp/releases/tag/2025-03-11
