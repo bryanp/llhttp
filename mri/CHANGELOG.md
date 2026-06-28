@@ -1,3 +1,10 @@
+## [v0.6.2](https://github.com/bryanp/llhttp/releases/tag/2026-06-28)
+
+*released on 2026-06-28*
+
+  * `chg` [#37](https://github.com/bryanp/llhttp/pull/37) Use the typed data API for Ruby 4 compatibility ([nobu](https://github.com/nobu))
+  * `chg` [#35](https://github.com/bryanp/llhttp/pull/35) Declare functions as Ractor-safe ([jhawthorn](https://github.com/jhawthorn))
+
 ## [v0.6.1](https://github.com/bryanp/llhttp/releases/tag/2025-03-11)
 
 *released on 2025-03-11*
