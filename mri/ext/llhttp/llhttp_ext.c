@@ -28,7 +28,8 @@ typedef struct {
   ID on_header_value_complete;
 } rb_llhttp_parser_data;
 
-static void rb_llhttp_free(llhttp_t *parser) {
+static void rb_llhttp_free(void *data) {
+  llhttp_t *parser = data;
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
 
   // If `parserData` is not `0`, it (and settings) were initialized.
@@ -41,21 +42,50 @@ static void rb_llhttp_free(llhttp_t *parser) {
   free(parser);
 }
 
+#ifdef TypedData_Make_Struct
+static size_t rb_llhttp_memsize(const void *data) {
+  return data ? sizeof(llhttp_t) : 0;
+}
+
+static const rb_data_type_t rb_llhttp_type = {
+  "LLHttp::Parser",
+  {0, rb_llhttp_free, rb_llhttp_memsize,},
+  0, 0, 0,
+};
+#endif
+
+static llhttp_t *rb_llhttp_get(VALUE self) {
+  llhttp_t *parser;
+
+#ifdef TypedData_Make_Struct
+  TypedData_Get_Struct(self, llhttp_t, &rb_llhttp_type, parser);
+#else
+  Data_Get_Struct(self, llhttp_t, parser);
+#endif
+
+  return parser;
+}
+
 VALUE rb_llhttp_allocate(VALUE klass) {
-  llhttp_t *parser = (llhttp_t *)malloc(sizeof(llhttp_t));
+  llhttp_t *parser;
+#ifdef TypedData_Make_Struct
+  VALUE self = TypedData_Make_Struct(klass, llhttp_t, &rb_llhttp_type, parser);
+#else
+  VALUE self = Data_Make_Struct(klass, llhttp_t, 0, rb_llhttp_free, parser);
+#endif
 
   // Set data to false so we know when the parser has been initialized.
   //
   parser->data = 0;
 
-  return Data_Wrap_Struct(klass, 0, rb_llhttp_free, parser);
+  return self;
 }
 
 VALUE rb_llhttp_callback_call(VALUE delegate, ID method) {
   return rb_funcall(delegate, method, 0);
 }
 
-void rb_llhttp_data_callback_call(VALUE delegate, ID method, char *data, size_t length) {
+void rb_llhttp_data_callback_call(VALUE delegate, ID method, const char *data, size_t length) {
   rb_funcall(delegate, method, 1, rb_str_new(data, length));
 }
 
@@ -83,7 +113,7 @@ int rb_llhttp_on_chunk_header(llhttp_t *parser) {
   return NUM2INT(rb_llhttp_callback_call(parserData->delegate, parserData->on_chunk_header));
 }
 
-int rb_llhttp_on_url(llhttp_t *parser, char *data, size_t length) {
+int rb_llhttp_on_url(llhttp_t *parser, const char *data, size_t length) {
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
 
   rb_llhttp_data_callback_call(parserData->delegate, parserData->on_url, data, length);
@@ -91,7 +121,7 @@ int rb_llhttp_on_url(llhttp_t *parser, char *data, size_t length) {
   return 0;
 }
 
-int rb_llhttp_on_status(llhttp_t *parser, char *data, size_t length) {
+int rb_llhttp_on_status(llhttp_t *parser, const char *data, size_t length) {
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
 
   rb_llhttp_data_callback_call(parserData->delegate, parserData->on_status, data, length);
@@ -99,7 +129,7 @@ int rb_llhttp_on_status(llhttp_t *parser, char *data, size_t length) {
   return 0;
 }
 
-int rb_llhttp_on_header_field(llhttp_t *parser, char *data, size_t length) {
+int rb_llhttp_on_header_field(llhttp_t *parser, const char *data, size_t length) {
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
 
   rb_llhttp_data_callback_call(parserData->delegate, parserData->on_header_field, data, length);
@@ -107,7 +137,7 @@ int rb_llhttp_on_header_field(llhttp_t *parser, char *data, size_t length) {
   return 0;
 }
 
-int rb_llhttp_on_header_value(llhttp_t *parser, char *data, size_t length) {
+int rb_llhttp_on_header_value(llhttp_t *parser, const char *data, size_t length) {
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
 
   rb_llhttp_data_callback_call(parserData->delegate, parserData->on_header_value, data, length);
@@ -115,7 +145,7 @@ int rb_llhttp_on_header_value(llhttp_t *parser, char *data, size_t length) {
   return 0;
 }
 
-int rb_llhttp_on_body(llhttp_t *parser, char *data, size_t length) {
+int rb_llhttp_on_body(llhttp_t *parser, const char *data, size_t length) {
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
 
   rb_llhttp_data_callback_call(parserData->delegate, parserData->on_body, data, length);
@@ -166,7 +196,7 @@ int rb_llhttp_on_header_value_complete(llhttp_t *parser) {
 VALUE rb_llhttp_parse(VALUE self, VALUE data) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   enum llhttp_errno err = llhttp_execute(parser, RSTRING_PTR(data), RSTRING_LEN(data));
 
@@ -180,7 +210,7 @@ VALUE rb_llhttp_parse(VALUE self, VALUE data) {
 VALUE rb_llhttp_finish(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   enum llhttp_errno err = llhttp_finish(parser);
 
@@ -194,7 +224,7 @@ VALUE rb_llhttp_finish(VALUE self) {
 VALUE rb_llhttp_reset(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   llhttp_reset(parser);
 
@@ -204,7 +234,7 @@ VALUE rb_llhttp_reset(VALUE self) {
 VALUE rb_llhttp_content_length(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   return ULL2NUM(parser->content_length);
 }
@@ -212,7 +242,7 @@ VALUE rb_llhttp_content_length(VALUE self) {
 VALUE rb_llhttp_method_name(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   return rb_str_new_cstr(llhttp_method_name(parser->method));
 }
@@ -220,7 +250,7 @@ VALUE rb_llhttp_method_name(VALUE self) {
 VALUE rb_llhttp_status_code(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   return UINT2NUM(parser->status_code);
 }
@@ -228,7 +258,7 @@ VALUE rb_llhttp_status_code(VALUE self) {
 VALUE rb_llhttp_http_major(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   return UINT2NUM(parser->http_major);
 }
@@ -236,7 +266,7 @@ VALUE rb_llhttp_http_major(VALUE self) {
 VALUE rb_llhttp_http_minor(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   return UINT2NUM(parser->http_minor);
 }
@@ -244,7 +274,7 @@ VALUE rb_llhttp_http_minor(VALUE self) {
 VALUE rb_llhttp_keep_alive(VALUE self) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   int ret = llhttp_should_keep_alive(parser);
 
@@ -254,7 +284,7 @@ VALUE rb_llhttp_keep_alive(VALUE self) {
 static VALUE rb_llhttp_init(VALUE self, VALUE type) {
   llhttp_t *parser;
 
-  Data_Get_Struct(self, llhttp_t, parser);
+  parser = rb_llhttp_get(self);
 
   llhttp_settings_t *settings = (llhttp_settings_t *)malloc(sizeof(llhttp_settings_t));
   llhttp_settings_init(settings);
@@ -294,23 +324,23 @@ static VALUE rb_llhttp_init(VALUE self, VALUE type) {
   }
 
   if (rb_respond_to(parserData->delegate, parserData->on_url)) {
-    settings->on_url = (llhttp_data_cb)rb_llhttp_on_url;
+    settings->on_url = rb_llhttp_on_url;
   }
 
   if (rb_respond_to(parserData->delegate, parserData->on_status)) {
-    settings->on_status = (llhttp_data_cb)rb_llhttp_on_status;
+    settings->on_status = rb_llhttp_on_status;
   }
 
   if (rb_respond_to(parserData->delegate, parserData->on_header_field)) {
-    settings->on_header_field = (llhttp_data_cb)rb_llhttp_on_header_field;
+    settings->on_header_field = rb_llhttp_on_header_field;
   }
 
   if (rb_respond_to(parserData->delegate, parserData->on_header_value)) {
-    settings->on_header_value = (llhttp_data_cb)rb_llhttp_on_header_value;
+    settings->on_header_value = rb_llhttp_on_header_value;
   }
 
   if (rb_respond_to(parserData->delegate, parserData->on_body)) {
-    settings->on_body = (llhttp_data_cb)rb_llhttp_on_body;
+    settings->on_body = rb_llhttp_on_body;
   }
 
   if (rb_respond_to(parserData->delegate, parserData->on_chunk_complete)) {
