@@ -62,9 +62,17 @@ module LLHttp
 
       @callbacks = Callbacks.new
 
+      # Keep explicit references to the callback procs. JRuby's FFI does not
+      # retain Ruby references to procs assigned into FFI::Struct callback
+      # fields, so without these the JVM may collect the procs and reclaim
+      # their native trampolines while the parser is still in use, after
+      # which llhttp_execute completes without invoking any callbacks.
+      @callback_procs = []
+
       (CALLBACKS + CALLBACKS_WITH_DATA).each do |callback|
         if delegate.respond_to?(callback)
-          @callbacks[callback] = method(callback).to_proc
+          @callback_procs << (callback_proc = method(callback).to_proc)
+          @callbacks[callback] = callback_proc
         end
       end
 
