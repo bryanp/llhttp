@@ -21,9 +21,21 @@ RSpec.describe "parsing after GC compaction" do
       # parser's @delegate ivar -- a movable heap slot compaction will relocate.
       def build = LLHttp::Parser.new(Delegate.new, type: :response)
 
+      # Relocate every movable object to fresh pages. The heap-expansion keyword
+      # was named double_heap: through Ruby 3.1 and renamed expand_heap: in 3.2.
+      def relocate
+        GC.verify_compaction_references(expand_heap: true, toward: :empty)
+      rescue ArgumentError
+        begin
+          GC.verify_compaction_references(double_heap: true, toward: :empty)
+        rescue ArgumentError
+          GC.verify_compaction_references(toward: :empty)
+        end
+      end
+
       10.times do
         parser = build
-        GC.verify_compaction_references(expand_heap: true, toward: :empty)
+        relocate
         parser << "HTTP/1.1 200 OK\r\nX-Test: yes\r\n\r\n"
       end
 
