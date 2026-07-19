@@ -28,6 +28,20 @@ typedef struct {
   ID on_header_value_complete;
 } rb_llhttp_parser_data;
 
+// Mark the cached delegate so GC keeps it alive. `rb_gc_mark` also pins the
+// object, which is required here: the delegate `VALUE` is cached in the C
+// struct, so if compaction moved it the cached copy would dangle.
+static void rb_llhttp_mark(void *data) {
+  llhttp_t *parser = data;
+  rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
+
+  // `parserData` is `0` between allocation and initialization.
+  //
+  if (parserData != 0) {
+    rb_gc_mark(parserData->delegate);
+  }
+}
+
 static void rb_llhttp_free(void *data) {
   llhttp_t *parser = data;
   rb_llhttp_parser_data *parserData = (rb_llhttp_parser_data*) parser->data;
@@ -49,7 +63,7 @@ static size_t rb_llhttp_memsize(const void *data) {
 
 static const rb_data_type_t rb_llhttp_type = {
   "LLHttp::Parser",
-  {0, rb_llhttp_free, rb_llhttp_memsize,},
+  {rb_llhttp_mark, rb_llhttp_free, rb_llhttp_memsize,},
   0, 0, 0,
 };
 #endif
@@ -71,7 +85,7 @@ VALUE rb_llhttp_allocate(VALUE klass) {
 #ifdef TypedData_Make_Struct
   VALUE self = TypedData_Make_Struct(klass, llhttp_t, &rb_llhttp_type, parser);
 #else
-  VALUE self = Data_Make_Struct(klass, llhttp_t, 0, rb_llhttp_free, parser);
+  VALUE self = Data_Make_Struct(klass, llhttp_t, rb_llhttp_mark, rb_llhttp_free, parser);
 #endif
 
   // Set data to false so we know when the parser has been initialized.
